@@ -1,0 +1,55 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+{% block title %}الملف الشخصي{% endblock %}
+{% block cr %}{% translate "teacher Profile" %}{% endblock %}
+{% block content %}
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-9">
+          <h2 class="tit-3">معلومات المدرس</h2>
+          <hr>
+          <div style="font-size:24px; margin-left: 30px">
+            <pre>اسم المعلم : {{ teacher.teacher_name }}</pre>
+            <pre> الرقم الوظيفي : {{ teacher.job_code }}</pre>
+            <pre>المؤهل : {{ teacher.teacher_qual }}</pre>
+          </div>
+        </div>
+         
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="personal_information">
+        <div class="row">
+          <h2 class="tit-3">المعلومات الشخصية </h2>
+        </div>
+        <hr>
+        <div class="row">
+          <div style="font-size:24px; margin-left: 30px">
+             <pre>تاريخ الميلاد : {{ teacher.teacher_dob|default:"-" }}</pre>
+             <pre>تاريخ التعيين : {{ teacher.teacher_doh|default:"-" }}</pre>
+            <pre>الجنس : {{ teacher.teacher_gender|default:"-" }}</pre>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="address_information">
+        <div class="row">
+          <h2 class="tit-3">ملعومات العنوان </h2>
+        </div>
+        <hr>
+        <div class="row">
+          <div style="font-size:24px; margin-left: 30px">
+            <pre>المحافظة:{{ teacher.teacher_address.governorate.name|default:"-" }}</pre>
+            <pre>المديرية: {{ teacher.teacher_address.district.name|default:"-" }}</pre>
+            
+          </div>
+        </div>
+      </div>
+
+       
+
+    </div>
+  </div>
+{% endblock %}

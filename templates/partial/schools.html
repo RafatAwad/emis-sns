@@ -1,0 +1,65 @@
+{% load static i18n %}
+{% if items %}
+<div class="card-body">
+    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-striped table-bordered datatable dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="border-collapse: collapse !important">
+                    <thead>
+                        <tr role="row">
+                            <th>Id</th>
+                            <th>{% translate "school Name" %}</th>
+                            <th>{% translate "school code" %}</th>
+                            <th>{% translate "governorate" %}</th>
+                            <th>{% translate "district" %}</th>
+                            <th>{% translate "gender" %}</th>
+                            <th>{% translate "phone number" %}</th>
+                            <th>{% translate "shift" %}</th>
+                            <th>{% translate "levels" %}</th>
+                            <th>{% translate "Actions" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                          <tr role="row" class="odd">
+                              <td>{{ forloop.counter }}</td>
+                              <td class="text-right">{{ item.school_name }}</td>
+                              <td>{{ item.school_code|set_zeros:5 }}</td>
+                              <td>{{ item.school_address.governorate.name }}</td>
+                              <td>{{ item.school_address.district.name }}</td>
+                              <td>{{ item.school_gender.name }}</td>
+                              <td>{{ item.school_phone_no|default:"-"}}</td>
+                              <td>{{ item.school_shift.name }}</td>
+                              <td>{% for level in item.school_levels.all %}{{ level.name  }} {% endfor %}</td>
+                              <td>
+                                  <div class="btn-group">
+                                      <button type="button" class="btn btn-info btn-flat dropdown-toggle fa fa-align-left" data-toggle="dropdown">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                      </button>
+                                      <div class="dropdown-menu" role="menu">
+                                        <a class="dropdown-item" href="{% url 'add-student'  item.school_code %}"><i class="fa fa-plus"></i> {% translate "add Student" %}</a>
+                                        <a class="dropdown-item" href="{% url 'add-teacher' item.school_code %}"> <i class="fa fa-plus"></i> {% translate "add teacher" %}</a>
+                                        <a class="dropdown-item" href="{% url 'school-edit' item.school_code %}"><i class="fa fa-edit"></i> {% translate "edit school" %}</a>
+                                       {% if user.role.id == 1 %}
+                                       <a class="dropdown-item" id="del" href="{% url 'school-delete' item.school_code %}"><i class="fa fa-trash-o"></i>{% translate "delete school" %}</a>
+                                       {% endif %}
+
+                                      </div>
+                                    </div>
+
+
+                              </td>
+                          </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+       {% include 'partial/pagination.html' %}
+    </div>
+</div>
+{% else %}
+<div class="card-body">
+    <h3>{% translate "No schools Found" %}</h3>
+</div>
+{% endif %}

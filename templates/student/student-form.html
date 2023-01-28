@@ -1,0 +1,176 @@
+{% extends "base/base.html" %}
+{% load i18n%}
+{% block title %}{% translate "student form" %} {% endblock%}
+{% block cr %}{% translate "student form" %} {% endblock%}
+{%  block content  %}
+<input type="button" class="btn btn-primary" style="cursor:pointer" value="طباعة" onclick="window.print()" target="new-window"/>
+<hr />
+<div id="printableArea"  class="col-md-20"> 
+    <section>
+        <!--Table-->
+        <table class="table table-bordered border-black"><thead>
+            <tr>
+                <th  colspan="9"   class="table-info"> <p>بيانات عامة عن الطالب</p></th> 
+            </tr>
+            <tr>
+                <td>المحافظة</td>
+                <td colspan="2">------- </td>
+                <td>المديرية</td>
+                <td colspan="2">------- </td>
+                <td>العزلة </td>
+                <td colspan="2">--------- </td>
+            </tr>
+            <tr>
+                <td>القرية</td>
+                <td colspan="2">------- </td>
+                <td>المحلة</td>
+                <td colspan="2">------- </td>
+                <td>العزلة </td>
+                <td colspan="2">--------- </td>
+            </tr>
+                <tr>
+                    <td>الحالة الحضرية</td>
+                    <td>حضر </td>
+                    <td colspan="1">[-----] </td>
+                    <td>ريف </td>
+                    <td colspan="1"> [-----] </td>
+                    <td>اسم المدرسة </td>
+                    <td colspan="3">  ---------------</td>
+                </tr>
+                <tr>
+
+                </tr>
+                <tr>
+                    <th  colspan="9" class="table-info">
+                        بيانات الطفل
+                    </th>
+                </tr>
+                <tr>
+                    <td>الاسم رباعيا مع اللقب</td>
+                    <td>-----------------------------------</td>
+                    <td>الجنس</td>
+                    <td >ذكر 
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>انثى</td>
+                    <td colspan="1">العمر</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>تاريخ الميلاد</td>
+                    <td></td>
+                    <td>محل الميلاد</td>
+                    <td></td>
+                    <td>لديه شهادة ميلاد</td>
+                    <td>نعم</td>
+                    <td></td>
+                    <td>لا</td>
+                    <td></td>
+                    <tr>
+                        <td>العمر النمائي للطفل</td>
+                        <td colspan="8"></td>
+                    </tr>
+                </tr>
+                <tr>
+                    <td>اسم ولي الامر</td>
+                    <td></td>
+                    <td>التلفون</td>
+                    <td colspan="2"></td>
+                    <td>علاقته بالطفل</td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <th colspan="9"  class="table-info">بيانات والدي الطفل</th>
+                </tr>
+                <tr>
+                    <td>اسم الاب</td>
+                    <td></td>
+                    <td >التلفون</td>
+                    <td colspan="2"></td>
+                    <td>العمل</td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td>اسم الام</td>
+                    <td></td>
+                    <td>التلفون</td>
+                    <td colspan="2"></td>
+                    <td>العمل</td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> الحالة المادية للاسرة</td>
+                    <td colspan="6">فقيرة   ( ---  )    محدودة الدخل  ( ----   )    ميسورة الحال  ( ---- )             غنية  (  ----- )</td>
+                </tr>
+                <tr>
+                    <td colspan="6">الوضع الحالي لرعاية الطفل ومع من يعيش أثناء الإحالة (اختر اجابة واحدة)</td>
+                </tr>
+                <tr>
+                    <td colspan="9">يعيش مع كلا الوالدين [ --- ]	يعيش مع الأب [ --- ]	بعيش مع الأم [ --- ]	يعيش مع شقيق بالغ[ --- ]	يعيش مع فرد آخر من الأسرة [- --- ]</td>
+                </tr>
+                <tr>
+                    <td colspan="7">الحالة الصحية للطفل:   هل الطفل يعاني من أي امراض مزمنة ؟  اكتبها ان وجدت</td>
+                    
+                </tr>
+                <tr>
+                    <td colspan="9">---</td>
+                </tr>
+                <tr>
+                    <td colspan="3">هل تم التدخل من قبل نعم(--- )  لا (---- )</td>
+                    <td colspan="3">نوع التدخل ---------------</td>
+                    <td colspan="3"> من قام بالتخل -----------</td>
+                </tr>
+                <tr>
+                    <td> نوع المجتمع الذي ينتمي اليه الطفل</td>
+                    <td colspan="1"> نازحين</td>
+                    <td colspan="3">مجتمع مضيف</td>
+                    <td colspan="2">مجتمع مهمشين</td>
+                    <td colspan="2">مهاجرين</td>
+                    
+                </tr>
+                <tr>
+                    <td colspan="9"> اخرى اذكرها </td>
+                </tr>
+
+            </tr>
+            <tr>
+                <th  colspan="9" class="table-info"> البيانات الدراسية للاطلاب ذوي الاحتياجات الخاصة</th>
+                
+            </tr>
+            <tr>
+                <td > الاسم الرباعي</td>
+                <td  colspan="8"></td>
+            </tr>
+            <tr><td> المرحلة الدراسية</td>
+                <td colspan="6"> روضة [ ---  ]           اساسي [  ---- ]  ثانوي [ ---  ]            </td>
+            </tr>
+            <tr>
+                <td>حالة الاعاقة</td>
+                <td colspan="8"></td>
+            </tr>
+            <tr>
+                <td> الموهبة</td>
+                <td colspan="8">
+                
+                
+                </td>
+                
+            </tr>   
+        <tr>
+            <td> حالة الانقطاع </td>
+            <td> منقطع</td>
+            <td colspan="3"></td>
+            <td> غير منقطع</td>
+            <td colspan="2"></td>
+        </tr>
+        </thead>
+        </table>
+    </section>
+</div>
+        <!--Table-->
+       
+    {%  endblock content  %}
+
+  

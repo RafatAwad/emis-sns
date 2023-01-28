@@ -1,0 +1,26 @@
+{% load static i18n %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="نظام إدارة معلومات الطلاب من ذوي الاحتياجات الخاصة">
+    <meta name="author" content="rafat awad">
+    <meta name="keyword" content="ذوي الاحتياجات الخاصة, اليمن, عدن">
+    <link rel="shortcut icon" href="{% static 'src/img/favicon.png' %}">
+  
+
+    <!-- Icons -->
+    <link href="{% static 'dist/vendors/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'dist/vendors/css/simple-line-icons.min.css' %}" rel="stylesheet">
+
+    <!-- Main styles for this application -->
+    {% if 'ar' in LANGUAGE_CODE %} 
+    <link rel="stylesheet" href="{% static 'dist/css/style.rtl.css' %}"/>
+    <link href="{% static 'src/css/form.css' %}" rel="stylesheet">
+    {% else %}
+    <link href="{% static 'dist/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'src/css/form.css' %}" rel="stylesheet">
+    {% endif %}
+    {% block extrahead %}
+    {% endblock %}
+</head>

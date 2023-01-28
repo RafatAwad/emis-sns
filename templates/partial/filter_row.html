@@ -1,0 +1,10 @@
+{% load static i18n %}
+<div class="row">
+    <div class="col">
+        <div class="filter">
+            <form method="get" id="filterForm" load-district={% url 'load-district' %}>
+                {{tableFilter.form}}
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+{% block title %}{% translate "Edit School Info" %}{% endblock title %}
+{% block cr %}<a href="{% url 'schools-list' %}">{% translate "schools" %}</a>/{% translate "Edit School Info" %}{% endblock cr %}
+{% block content %}
+  <div class="card">
+    <div class="card-header">استمارة تعديل معلومات الطالب</div>
+    <div class="card-body">
+      <form class="" action="" method="post"  id="StudentRegistrationForm" load-schools-entry={% url 'load-schools-entry' %}>
+        <div class="card">
+          <div class="card-header">المعلومات الشخصية</div>
+          <div class="card-body">
+            {% csrf_token %}
+            {{ school_form.as_p }}
+          </div>
+        </div>
+        <button class="btn btn-info text-white" onclick="history.back()">{% translate "Go Back" %}</button>
+        <button type="submit" class="btn btn-primary">حفظ التعديلات</button>
+      </form>
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src="{% static 'src/js/registration.js' %}"></script>
+      <script src="{% static 'src/js/address.js' %}"></script>
+    </div>
+  </div>
+{% endblock %}

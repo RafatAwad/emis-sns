@@ -1,0 +1,179 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+{% block title %}{% translate "statics" %}{% endblock %}
+{% block cr %}{% translate "statics" %}{% endblock%}
+{% block content%}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <i class="fa fa-chart-bar"></i>
+                    {% translate "نوع الإعاقة" %}
+                  </h3>
+  
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                      <i class="fa fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div id="donut-chart" style="height: 300px;"></div>
+                </div>
+                <!-- /.card-body-->
+              </div>
+          </div>
+          <!-- /.col -->
+
+          <div class="col-md-6">
+            <!-- Bar chart -->
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fa fa-chart-bar"></i>
+                  {% translate "عدد طلاب المحافظات" %}
+                </h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fa fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div id="bar-chart" style="height: 300px;"></div>
+              </div>
+              <!-- /.card-body-->
+            </div>
+            <!-- /.card -->
+
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+<!-- jQuery -->
+<script src="{% static "dist/vendors/js/jquery.min.js"%}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static "dist/js/bootstrap.bundle.min.js" %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static "dist/js/adminlte.min.js" %}"></script>
+<!-- FLOT CHARTS -->
+<script src="{% static "dist/js/jquery.flot.js" %}"></script>
+<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+<script src="{% static "dist/js/jquery.flot.resize.js" %}"></script>
+<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+<script src=" {% static "dist/js/jquery.flot.pie.js" %}"></script>
+
+<script>
+  
+      /*
+     * BAR CHART
+     * ---------
+     */
+
+    var bar_data = {
+      data : [[1,10], [2,8], [3,4], [4,13], [5,17], [6,9]],
+      bars: { show: true }
+    }
+    $.plot('#bar-chart', [bar_data], {
+      grid  : {
+        borderWidth: 1,
+        borderColor: '#f3f3f3',
+        tickColor  : '#f3f3f3'
+      },
+      series: {
+         bars: {
+          show: true, barWidth: 0.5, align: 'center',
+        },
+      },
+      colors: ['#3c8dbc'],
+      xaxis : {
+        ticks: [[1,'عدن'], [2,'تعز'], [3,'March'], [4,'April'], [5,'May'], [6,'June']]
+      }
+    })
+    /* END BAR CHART */
+
+    /*
+     * DONUT CHART
+     * -----------
+     */
+
+    var donutData = [
+      {
+        label: 'إعاقة حركية',
+        data : 30,
+        color: '#3c8dbc'
+      },
+      {
+        label: 'إعاقة عقلية',
+        data : 20,
+        color: '#0073b7'
+      },
+      {
+        label: 'إعاقة سمعية',
+        data : 50,
+        color: '#00c0ef'
+      },
+      {
+        label: 'إعاقة بصرية',
+        data : 50,
+        color: '#222b31'
+      }
+    ]
+    $.plot('#donut-chart', donutData, {
+      series: {
+        pie: {
+          show       : true,
+          radius     : 1,
+          innerRadius: 0.5,
+          label      : {
+            show     : true,
+            radius   : 2 / 3,
+            formatter: labelFormatter,
+            threshold: 0.1
+          }
+
+        }
+      },
+      legend: {
+        show: false
+      }
+    })
+    /*
+     * END DONUT CHART
+     */
+
+
+
+  /*
+   * Custom Label formatter
+   * ----------------------
+   */
+  function labelFormatter(label, series) {
+    return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
+      + label
+      + '<br>'
+      + Math.round(series.percent) + '%</div>'
+  }
+</script>
+</body>
+{% endblock content%}

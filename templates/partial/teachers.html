@@ -1,0 +1,52 @@
+{% load static i18n %}
+{% if items %}
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-striped table-bordered datatable dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="border-collapse: collapse !important">
+            <thead>
+                <tr role="row">
+                    <th>Id</th>
+                    <th>{% translate "Name" %}</th>
+                    <th>{% translate "date of brith" %}</th>
+                    <th>{% translate "date of hire" %}</th>
+                    <th>{% translate "gender" %}</th>
+                    <th>{% translate "objects_L" %}</th>
+                    <th>{% translate "governorate" %}</th>
+                    <th>{% translate "district" %}</th>
+                    <th>{% translate "Actions" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr role="row" class="odd">
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ item.teacher_name|default:"غير موجود" }}</td>
+                    <td>{{ item.teacher_dob|date:'d-m-Y'|default:"-" }}</td>
+                    <td>{{ item.teacher_doh|date:'d-m-Y'|default:"-" }}</td>
+                    <td>{{ item.teacher_gender|default:"غير محدد" }}</td>
+                    <td>{% for object in item.objects_L.all %}{{ object.name }} {% endfor %}</td>
+                    <td>{{ item.teacher_address.governorate.name|default:"-"}}</td>
+                    <td>{{ item.teacher_address.district.name|default:"-"}}</td>
+                    <td>
+                        <a class="btn btn-success" href="{% url 'teacher-profile' item.id %}">
+                            <i class="fa fa-search-plus"></i>
+                        </a>
+                        <a class="btn btn-info" href="{% url 'teacher-edit' item.id %}">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a class="btn btn-danger" href="{% url 'teacher-delete' item.id %}">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% include 'partial/pagination.html' %}
+{% else %}
+    <div class="card-body">
+         <h3>{% translate "no teachers found" %}</h3>
+    </div>
+{% endif %}

@@ -1,0 +1,56 @@
+{% load static i18n %}
+                   <!--Pagination-->
+                <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">{% translate "Showing" %} {{ items.start_index }}-{{ items.end_index }} {% translate "of" %} {{ items.paginator.count }}
+                </div>
+                  <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                      {% if items.has_previous %}
+                          <li class="page-items">
+                          <button class="page-link" id="{% url url%}?page=1">{% translate "first" %}</button>
+                          </li>
+                          <li class="page-items">
+                          <button class="page-link" id="{%url url%}?page={{ items.previous_page_number }}">{% translate "Previous" %}</button>
+                          </li>
+                      {% else %}
+                          <li class="page-items disabled">
+                          <button class="page-link" id="#" tabindex="-1" aria-disabled="True">{% translate "Previous" %}</button>
+                          </li>
+                      {% endif %}
+
+                      {% if items.number|add:'-4' > 1 %}
+                          <li class="page-items"><button class="page-link" id="{% url url%}?page={{ items.number|add:'-5' }}">&hellip;</button></li>
+                      {% endif %}
+
+                      {% for i in items.paginator.page_range %}
+                          {% if items.number == i %}
+                              <li class="page-items active" aria-current="page">
+                          <span class="page-link">
+                              {{ i }}
+                              <span class="sr-only">(current)</span>
+                          </span>
+                          </li>
+                          {% elif i > items.number|add:'-5' and i < items.number|add:'5' %}
+                              <li class="page-items"><button class="page-link" id="{% url url%}?page={{ i }}">{{ i }}</button></li>
+                          {% endif %}
+                      {% endfor %}
+
+                      {% if items.paginator.num_pages > items.number|add:'4' %}
+                      <li class="page-items"><button class="page-link" id="{% url url%}?page={{ items.number|add:'5' }}">&hellip;</button></li>
+                      {% endif %}
+
+                      {% if items.has_next %}
+                          <li class="page-items">
+                          <button class="page-link" id="{% url url%}?page={{ items.next_page_number }}">{% translate "Next" %}</button>
+                          </li>                            
+                          <li class="page-items">
+                          <button class="page-link" id="{% url url%}?page={{ items.paginator.num_pages }}">{% translate "last" %}</button>
+                          </li>
+                      {% else %}
+                          <li class="page-items disabled">
+                          <button class="page-link" id="#" tabindex="-1" aria-disabled="True">{% translate "Next" %}</button>
+                      </li>
+                      {% endif %}
+                  </ul>
+                  </nav>
+                  <!--end of Pagination-->
+        

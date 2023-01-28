@@ -1,0 +1,99 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+{% block title %}{% translate "schools list" %}{% endblock %}
+{% block cr %}{% translate "schools list" %}{% endblock %}
+{% block content %}
+  <div class="animated fadeIn">
+      <div class="card">
+          <div class="card-header">
+              <i class="fa fa-edit"></i> {% translate "school Table" %}
+          </div>
+          {% include 'partial/filter_row_schools.html' %}
+          <div id="rafat">
+          {% include 'partial/schools.html' %}
+          </div>
+      </div>
+  </div>
+{% endblock %}
+{% block js%}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+$(document).on('change','#id_school_address__governorate__name',function(){
+        var url = $(".filter").attr("load-district");
+        var name = $("#id_school_name").val();
+        var governorateId = $(this).val();
+        var district = $("#districts").val();
+        var url2 = $("#filterForm").attr('load-schools')+"?school_name="+name+"&school_address__governorate__name="+governorateId+"&school_address__district__name=";
+
+        $.ajax({
+          url: url,
+          data: {
+            'governorate': governorateId,
+          },       
+      
+          success: function (data) {
+            $("#districts").html(data);
+          }
+        });
+        $.ajax({
+          type: 'GET',
+          url: url2,  
+          success: function (data) {
+              $("#rafat").html(data);
+          }
+          });
+});
+
+$('#districts').change( function(){
+  var name = $("#id_school_name").val();
+  var district = $(this).val();
+  var gov = $("#id_school_address__governorate__name").val();
+  var url = $("#filterForm").attr('load-schools')+"?school_name="+name+"&school_address__governorate__name="+gov+"&school_address__district__name="+district;
+  $.ajax({
+      type: 'GET',
+      url: url,  
+      success: function (data) {
+          $("#rafat").html(data);
+      }
+      });
+
+});
+
+$("#id_school_name").keyup(function(){ 
+  if ( $(this).val().length >= 3 ){
+      var name = $(this).val();
+  }else{
+      var name = '';
+  }
+  var district = $("#districts").val();
+  var gov = $('#id_school_address__governorate__name').val();
+  var url = $("#filterForm").attr('load-schools')+"?school_name="+name+"&school_address__governorate__name="+gov+"&school_address__district__name="+district;
+  $.ajax({
+          type: 'GET',
+          url: url,  
+          success: function (data) {
+              $("#rafat").html(data);
+          }
+          });
+
+});
+
+//pagination
+$(document).on('click', '.page-link' ,function () {
+  $("#rafat").fadeOut(500);
+  var url = $(this).attr("id");
+  var district = $("#districts").val();
+  var name = $("#id_school_name").val();
+  var gov = $("#id_school_address__governorate__name").val();
+
+  $.ajax({
+    type: 'GET',
+    url: url+"&school_address__district__name="+district+"&school_address__governorate__name="+gov+"&school_name="+name,
+    success: function (data) {
+        $("#rafat").html(data).fadeIn(500);
+    }
+    });
+});
+
+</script>
+{% endblock %}

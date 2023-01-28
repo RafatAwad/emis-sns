@@ -1,0 +1,88 @@
+{% load static i18n %}
+    <!-- /.row 2 widgets -->
+    <div class="card">
+    <h5 class="mb-2">ملخص إحصائيات مشرف <small>{{ user.location.location_type }} - {{ user.location.name }} , الأستاذ / {{user.username}}</small></h5>
+    <hr/>
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-12">
+          <div class="info-box bg-gradient-info">
+            <span class="info-box-icon"><i class="fa fa-bookmark"></i></span>
+
+            <div class="info-box-content">
+            <span class="info-box-number">{{user_students}}</span>
+              <span class="info-box-text"> عدد المراجعات  </span>
+              <div class="progress">
+                <div class="progress-bar" style="width: {{percent_user}}%"></div>
+              </div>
+              <span class="progress-description">
+                <small>بواسطة : {{ user.username }}</small>
+              </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+        <div class="col-md-3 col-sm-6 col-12">
+          <div class="info-box bg-gradient-warning">
+            <span class="info-box-icon"><span class="fa fa-thumbs-up"></span></span>
+
+            <div class="info-box-content">
+              <span class="info-box-number">{{ data_entries }} </span>
+              <span class="info-box-text"> مدخلي البيانات المضافين</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                <small>بواسطة : {{ user.username }}</small>
+            </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+        <div class="col-md-3 col-sm-6 col-12">
+          <div class="info-box bg-gradient-success">
+            <span class="info-box-icon"><i class="fa fa-tv"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-number">{{de_active}}</span>
+              <span class="info-box-text"> مدخلي البيانات النشطين </span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                <small>بواسطة : {{ user.username }}</small>
+              </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+        <div class="col-md-3 col-sm-6 col-12">
+          <div class="info-box bg-gradient-danger">
+            <span class="info-box-icon"><i class="fa fa-users"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-number">{{teachers_t}}</span>
+              <span class="info-box-text">عدد المعلمين</span>
+
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                <small>بواسطة : {{ user.username }}</small>
+              </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
+    </div>

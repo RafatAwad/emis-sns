@@ -1,0 +1,96 @@
+{% load static i18n %}
+  <div class="personal_info">
+      <div class="card">
+          <div class="card-header">{% translate "Personal Information" %}</div>
+        <div class="card-body">
+                {% csrf_token %}
+               <div class="row">
+                  <div class="col-md-4">
+                    <label>{{ student_form.name.label }}</label>{{ student_form.name }}
+                  </div>
+                  <div class="col-md-4">
+                    <label>{{ student_form.photo.label }}</label>{{ student_form.photo }}
+                  </div>
+                  <div class="col-md-4">
+                    <label>{{ student_form.gender.label }}</label>{{ student_form.gender }}
+                  </div>
+              </div>
+                <hr/>
+                <!--birth info -->
+              <div class="row">
+                  <div class="col-md-4">
+                    <label>{{ student_form.date_of_birth.label }}</label>{{ student_form.date_of_birth }}
+                  </div>
+                  <div class="col-md-4">
+                    <label>{{ student_form.place_of_birth.label }}</label>{{ student_form.place_of_birth }}
+                  </div>
+                  <div class="col-md-4">
+                    <label>{% translate "age" %}</label><span class="age"></span>
+                  </div>
+              </div>
+              <hr/>
+                <!--edu info -->
+              <div class="row">
+                <div class="col-md-4">
+                  <label>{{ student_form.grade.label }}</label>{{ student_form.grade }}
+                </div>
+                <div class="col-md-4">
+                  <label>{{ student_form.shift.label }}</label>{{ student_form.shift }}
+                </div>
+                <div class="col-md-4">
+                  <label>{{ student_form.spn_type.label }}</label>{{ student_form.spn_type }}
+                </div>
+              </div>
+              <hr/>
+            <!--family info -->
+              <div class="row">
+                <div class="col-md-3">
+                  <label>{{ student_form.mother_name.label }}</label>{{ student_form.mother_name }}
+                </div>
+                <div class="col-md-3">
+                  <label>{{ student_form.mother_work.label }}</label>{{ student_form.mother_work }}
+                </div>
+                <div class="col-md-3">
+                  <label>{{ student_form.father_job.label }}</label>{{ student_form.father_job }}
+                </div>
+                <div class="col-md-3">
+                  <label>{{ student_form.family_status.label }}</label>{{ student_form.family_status }}
+                </div>
+              </div>
+             <hr/>
+             <!--family info -->
+              <div class="row">
+                <div class="col-md-3">
+                  <label>{{ student_form.live_with.label }}</label>{{ student_form.live_with }}
+                </div>
+                <div class="col-md-3">
+                  <label>{{ student_form.socit.label }}</label>{{ student_form.socit }}
+                </div>
+                <div class="col-md-3">
+                  <label>{{ student_form.ur_or_ru.label }}</label>{{ student_form.ur_or_ru }}
+                </div>
+                <div class="col-md-3">
+                  <label>{{ student_form.relation.label }}</label>{{ student_form.relation }}
+                </div>
+              </div>
+              <hr/>
+              <!--family info -->
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>{{ student_form.disease.label }}</label>{{ student_form.disease }}
+                  </div>
+                  <div class="col-md-4">
+                    <label>{{ student_form.skills.label }}</label>{{ student_form.skills }}
+                  </div>
+                  <div class="col-md-4">
+                    <label>{{ student_form.edu_status.label }}</label>{{ student_form.edu_status }}
+                  </div>  
+                </div>
+              <hr/>
+            <button id="personal_info_prev_btn" type="button" class="btn btn-primary pull-right">{% translate "Previous" %}</button>
+            <button id="personal_info_btn" type="button" class="btn btn-primary pull-left">{% translate "Next" %}</button>
+        </div>
+      </div>
+  </div>
+  
+  

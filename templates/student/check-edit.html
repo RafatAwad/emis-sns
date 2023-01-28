@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+{% block title %}{% translate "Edit Student Info" %}{% endblock title %}
+{% block cr %}<a href="{% url 'student-list' %}">{% translate "students" %}</a>/{% translate "Edit Student Info" %}{% endblock cr %}
+{% block content %}
+  <div class="card">
+    <div class="card-header"> مراجعة معلومات الطالب </strong> - {{main.name}}</div>
+    <div class="card-body">
+      <form class="filterForm" action="" enctype="multipart/form-data" method="post"  id="StudentRegistrationForm" load-schools-entry={% url 'load-schools-entry' %}>
+
+        {% include 'partial/registration/address-info-edit.html' %}
+        {% include 'partial/registration/student-info.html' %}
+    
+        {% include 'partial/registration/certificates-info.html' %}
+        {% include 'partial/registration/parent-info-check.html' %}
+      </form>
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src="{% static 'src/js/registration.js' %}"></script>
+      <script src="{% static 'src/js/address.js' %}"></script>
+    </div>
+  </div>
+{% endblock %}
+{% block js%}
+<script>
+  $(document).on('click','.yes', function(){
+    $("#section").show();
+    $(".ask").hide();
+    $("#address_info_btn").attr("style","pointer-events:none")
+  });
+  $("#id_school").change(function(){
+    if( $(this).val() ){
+      $("#address_info_btn").attr("style","pointer-events :all");
+      $("#address_info_btn").removeClass('disabled');
+    }else{
+      $("#address_info_btn").attr("style","pointer-events :none");
+      $("#address_info_btn").addClass('disabled');
+    }
+
+});
+$("#parent_governorate").on('change',function () {
+  var url = $(".filterForm").attr("load-schools-entry");
+  var governorateId = $(this).val();
+
+
+  $.ajax({
+    url: url,
+    data: {
+      'governorate': governorateId,
+    },       
+
+    success: function (data) {
+      $("#parent_district").html(data);
+    }
+  });
+
+});
+
+</script>
+{%endblock%}

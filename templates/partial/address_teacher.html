@@ -1,0 +1,13 @@
+<option value="">---------</option>
+{% for district in district %}
+<option value="{{ district.id }}">{{ district.name }}</option>
+{% endfor %}
+{% for sub_district in sub_district %}
+<option value="{{ sub_district.id }}">{{ sub_district.name }}</option>
+{% endfor %}
+{% for village in village %}
+<option value="{{ village.id }}">{{ village.name }}</option>
+{% endfor %}
+{% for sub_village in sub_village %}
+<option value="{{ sub_village.id }}">{{ sub_village.name }}</option>
+{% endfor %}

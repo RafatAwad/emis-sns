@@ -1,0 +1,170 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+{% block title %}{% translate "home" %}{% endblock %}
+{% block cr %}{% translate "InterFace" %}{% endblock%}
+{% block head %}
+{% endblock %}
+{% block content %}
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+        {%if user.role.id != 3 %}
+            {% if user.role.id == 2 %}
+              <h3 class="card-title">مديريات محافظة - {{ user.location.name}} </h3>
+            {% else %}
+              <h3 class="card-title">محافظات الجمهورية</h3>
+            {% endif %}
+            </div>
+            <div class="card-body carousel slide MultiCarousel bg-primary" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
+                <a class=" carousel-control-prev  rightLst"  role="button">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">{% translate "Previous" %}</span>
+                </a>
+                
+                <a class="carousel-control-next  leftLst" role="button" >
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">{% translate "Next" %}</span>
+                </a>
+              <ul class="MultiCarousel-inner pagination pagination-month justify-content-center"  data-touch="true">
+                {% for address in addresses %}
+                <li class="page-item item">
+                <a class="page-link" href="{% url 'gov-schools' address.id %}">
+                    <p class="page-month">{{address.name}}</p>
+                    <p class="page-year">{{address.id}}</p>
+                </a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    {%endif%}
+    <h5 class="mb-2">ملخص إحصائيات <small>{% if user.location %}{{ user.location.location_type }} - {{ user.location.name }}{%else%} الجمهورية {%endif%}</small></h5>
+    <hr/>
+    <div class="row">
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-warning">
+
+                <div class="card-body pb-0">
+                    <div class="btn-group float-right">
+                        <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-settings"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="{% url 'student-list' %}">{% translate "all students" %}</a>
+                            <a class="dropdown-item" href="{% url 'student-registration' %}">{% translate "add student" %}</a>
+                        </div>
+                    </div>
+                    <div class="text-value"><a href="{% url 'student-list' %}" class="btn btn-transparent num">{{ student }}</a></div><span class="fa fa-wheelchair left-icon pull-left"></span>
+                    <div>{% translate "Students Total" %}</div>
+                    <small>من ذوي الاحتياجات </small><br/>
+                    <small>{% if user.location %} في : {{ user.location.location_type }} - {{ user.location.name }}{% else %}في جميع المحافظات {% endif %}</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-success">
+
+                <div class="card-body pb-0">
+                    <div class="btn-group float-right">
+                        <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-settings"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="{% url 'student-list' %}">{% translate "all students" %}</a>
+                            <a class="dropdown-item" href="{% url 'student-registration' %}">{% translate "add student" %}</a>
+                        </div>
+                    </div>
+                    <div class="text-value"><a href="{% url 'student-list' %}" class="btn btn-transparent num">{{ students_checked }}</a></div><span class="fa fa-thumbs-up left-icon pull-left"></span>
+                    <div>{% translate "Students Total" %}</div>
+                    <small> المراجعين</small><br/>
+                    <small>{% if user.location %} في : {{ user.location.location_type }} - {{ user.location.name }}{% else %}في جميع المحافظات {% endif %}</small>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-warning">
+                <div class="card-body pb-0">
+                    <div class="btn-group float-right">
+                        <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-settings"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="{% url 'teacher-list' %}">{% translate "all teachers" %}</a>
+                            <a class="dropdown-item" href="{% url 'schools-list' %}">{% translate "add teacher" %}</a>
+                        </div>
+                    </div>
+                    <div class="text-value"><a href="{% url 'teacher-list' %}" class="btn btn-transparent num">{{ teachers }}</a></div><span class="fa fa-users left-icon pull-left"></span>
+                    <div>{% translate "Teachers Total" %}</div>
+                    <small>المسجلين</small><br/>
+                    <small>{% if user.location %} في : {{ user.location.location_type }} - {{ user.location.name }}{% else %}في جميع المحافظات {% endif %}</small>
+
+
+                </div>
+            </div>
+        </div>
+
+          <!--brogress bars-->
+          <div class="col-md-3 col-sm-6 col-12">
+  
+            <div class="progress-group">
+                الإعاقة العقلية
+                 <span class="float-right"><b>{{st_1}}</b>/{{ st_1_per }}%</span>
+                 <div class="progress progress-sm">
+                   <div class="progress-bar bg-danger" style="width: {{st_1_per}}%"></div>
+                 </div>
+               </div>
+     
+               <!-- /.progress-group -->
+            <div class="progress-group">
+              الإعاقة الحركية
+              <span class="float-right"><b>{{st_2}}</b>/{{ st_2_per }}%</span>
+              <div class="progress progress-sm">
+                <div class="progress-bar bg-primary" style="width: {{st_2_per}}%"></div>
+              </div>
+            </div>
+            <!-- /.progress-group -->
+            <div class="progress-group">
+              الإعاقة السمعية
+              <span class="float-right"><b>{{st_3}}</b>/{{ st_3_per }}%</span>
+              <div class="progress progress-sm">
+                <div class="progress-bar bg-warning" style="width: {{st_3_per}}%"></div>
+              </div>
+            </div>
+            <!-- /.progress-group -->
+
+            <div class="progress-group">
+                <span class="progress-text">الإعاقة البصرية</span>
+                <span class="float-right"><b>{{st_4}}</b>/{{ st_4_per }}%</span>
+                <div class="progress progress-sm">
+                  <div class="progress-bar bg-success" style="width: {{st_4_per}}%"></div>
+                </div>
+              </div>
+    
+              <!-- /.progress-group -->
+          </div>
+  
+          <!-- /.col -->
+
+    </div>
+    {% if user.role.id == 2%}
+    {% include 'partial/home/governorate.html' %}
+    {% elif user.role.id == 1 %}
+    {% include 'partial/home/admin.html' %}
+    {% else %}
+    {% include 'partial/home/district.html' %}
+    {%endif%}
+
+</div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'src/js/carousel.js' %}"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+{% endblock%}

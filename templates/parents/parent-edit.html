@@ -1,0 +1,66 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+{% block title %}{% translate "Edit Student Info" %}{% endblock title %}
+{% block cr %}<a href="{% url 'parents-list' %}"> {% translate "parents" %}</a> / {% translate "Edit Parent Info" %} - {{parent.parent_name}}{% endblock cr %}
+{% block content %}
+  <div class="card">
+    <div class="card-header">استمارة تعديل معلومات ولي الأمر</div>
+    <div class="card-body">
+      <form class="" action="" method="post"  id="url" url={% url 'load-schools-entry' %}>
+        <div class="card">
+          <div class="card-header">المعلومات الشخصية</div>
+          <div class="card-body">
+            {% csrf_token %}
+            {{ parent_form.as_p }}
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">معلومات السكن</div>
+          <div class="card-body">
+            {% csrf_token %}
+            {{ parent_address_form.as_p }}
+          </div>
+        </div>
+        <button class="btn btn-info text-white" onclick="history.back()">{% translate "Go Back" %}</button>
+        <button type="submit" class="btn btn-primary">حفظ التعديلات</button>
+
+      </form>
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    </div>
+  </div>
+<script>
+  $(document).ready(function(){
+    var gov = $("#id_governorate").val();
+    var dist = $("#id_district").val();
+    var url = $("#url").attr('url');
+    $.ajax({
+      url: url,
+      data: {
+        'governorate': gov,
+      },       
+  
+      success: function (data) {
+        $("#id_district").html(data);
+        $("#id_district").val(dist);
+      }
+    });
+});
+$("#id_governorate ").on('change',function () {
+  var url = $("#url").attr("url");
+  var governorateId = $(this).val();
+
+  $.ajax({
+    url: url,
+    data: {
+      'governorate': governorateId,
+    },       
+
+    success: function (data) {
+      $("#id_district").html(data);
+    }
+  });
+
+});
+</script>
+{% endblock %}

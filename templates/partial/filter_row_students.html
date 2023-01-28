@@ -1,0 +1,36 @@
+{% load static i18n %}
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+          <div class="btn btn-warning"><a href="{% if gov %}{% url 'export-stu' gov %}{% else %}{% url 'export-stu' %}{% endif %}" style="color:white;margin-bottom:10px;" > <span class="fa fa-book"></span> تقرير </a> </div>
+          <div class="btn btn-primary"><a href="{% url 'printf' %}" style="color:white;margin-bottom:10px;" > <span class="fa fa-book"></span> طباعة استمارة </a> </div>
+          <div class="btn btn-success"><a href="{% url 'student-registration' %}" style="color:white;" > <span class="fa fa-user-plus"></span>  {% translate "add student" %}</a> </div>
+          <label>{% translate "name" %} : </label>{{ tableFilter.form.name }}
+          <hr/>
+          <div class="filter-row"  url-get="{% url 'student-list2' %}" >
+              <form method="get" id="filterForm" load-district="{% url 'load-district' %}">
+                {% if user.role.id == 2 %}
+                <label>{% translate "edu year" %} : </label>{{ tableFilter.form.year }}
+                <label>{% translate "grade" %} : </label>{{ tableFilter.form.grade }}
+                <label>{% translate "district" %} : </label>
+                <select name="address__district__name" id="districts">
+                    <option value="">---------</option>
+                    {% for district in districts %}
+                    <option value="{{ district.id }}">{{ district.name }}</option>
+                    {% endfor %}
+                </select>
+                {% elif user.role.id == 1 %}
+                <label>{% translate "year" %} : </label>{{ tableFilter.form.year }}
+                <label>{% translate "grade" %} : </label>{{ tableFilter.form.grade }}
+                    <label>{% translate "governorate" %} : </label>{{ tableFilter.form.address__governorate__name }}
+                    <label>{% translate "district" %} : </label>
+                    <select name="address__district__name" id="districts">
+                    <option>---------</option>
+                </select>
+                {% else %}
+
+                {% endif%}
+              </form>
+          </div>
+          <hr />
+      </div>
+</div>

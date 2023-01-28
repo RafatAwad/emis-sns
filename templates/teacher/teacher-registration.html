@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+{% block title %}{% translate "teachers Register Form" %}{% endblock %}
+{% block cr %}{% translate "teachers Register Form" %}{% endblock %}
+{% block content %}
+  <div class="card">
+    <div class="card-header">{% translate "teachers Register Form" %}</div>
+    <div class="card-body">
+      <form class="" action="" method="post" enctype="multipart/form-data" id="TeacherRegistrationForm" address-teacher={% url 'address-teacher' %} >
+        <div class="address_info">
+          <div class="card">
+            <div class="card-header text-danger" >سيتم إضافة معلومات المدرسة والسكن  هذه بشكل آلي  ؟ </div>
+            <div class="card-body">
+              {% csrf_token %}
+              <br/>
+              <table class="table table-striped table-bordered datatable dataTable no-footer">
+              <tr><td>اسم المدرسة</td> <td>يداوم المعلم حالياً في </td></tr>
+              <tr><td> {{school_info.school_name}} </td><td> محافظة {{school_info.school_address.governorate.name}} - مديرية : {{school_info.school_address.district.name}}</td></tr>
+              </table>
+              <input type="hidden" value="{{school_info.school_code}}" name="school_code">
+              <input type="hidden" value="{{school_info.school_address.id}}" name="address">
+            </div>
+          </div>
+          <button id="address_info_btn" type="button" class="btn btn-primary pull-left">موافق</button>
+        </div>
+
+        <div class="personal_info">
+          <div class="card">
+            <div class="card-header">{% translate "Personal Information" %}</div>
+            <div class="card-body">
+              {% csrf_token %}
+              {{ teacher_info.as_p }}
+            </div>
+          </div>
+          <button id="personal_info_prev_btn" type="button" class="btn btn-primary pull-right">{% translate "Previous" %}</button>
+          <button id="submit" type="submit" class="btn btn-primary pull-left">{% translate "submit" %}</button>
+        </div>
+
+      </form>
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src="{% static 'src/js/registration.js' %}"></script>
+      <script src="{% static 'src/js/teacher-address.js' %}"></script>
+    </div>
+  </div>
+{% endblock %}

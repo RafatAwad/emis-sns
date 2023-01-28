@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+{% block title %}{% translate "Paernt Lis" %}{% endblock %}
+{% block cr %}{% translate "Parent Lis" %}{% endblock %}
+{% block content %}
+  <div class="animated fadeIn">
+      <div class="card">
+          <div class="card-header">
+              <i class="fa fa-edit"></i>{% translate "parents list" %}
+          </div>
+          <div class="card-body">
+              <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                  <div class="row">
+                      <div class="col-sm-12 col-md-12">
+                        <div class="btn btn-primary"><a href="#" style="color:white;margin-bottom:10px;" > <span class="fa fa-book"></span> {% translate "print report" %}</a> </div>
+                        <div class="btn btn-success"><a href="{% url 'add-parent' %}" style="color:white;" > <span class="fa fa-user-plus"></span>  {% translate "add parent" %}</a> </div>
+                        <hr />
+                      </div>
+                  </div>
+                  {% include 'partial/filter_row.html' %}
+
+                  <div id="rafat">
+                    {% include 'partial/parents.html' %}
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+  {% endblock %}
+  {% block js%}
+  <script>
+  //pagination
+  $(document).ready(function(){
+  $(document).on('click', '.page-link' , function () {
+      var url = $(this).attr("id");
+      //var year = $("#id_year").val();
+      //var name = $("#id_name").val();
+      //var grade = $("#id_grade").val();
+      //var dist = $("#districts").val();
+      //var gov = $("#id_address__governorate__name").val();
+    
+      $.ajax({
+        type: 'GET',
+        url: url,
+        success: function (data) {
+            $("#rafat").html(data);
+        }
+        });
+    });
+  });
+  </script>
+{% endblock%}

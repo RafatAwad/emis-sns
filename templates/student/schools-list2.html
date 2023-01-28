@@ -1,0 +1,100 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+{% block title %}{% translate "schools list" %}{% endblock %}
+{% block cr %}{% translate "schools list" %}{% endblock %}
+{% block content %}
+  <div class="animated fadeIn">
+      <div class="card">
+          <div class="card-header">
+              <i class="fa fa-edit"></i>{%if user.role.id == 2 %}{% translate "district schools of "%} {{address.name}}{% else %} {% translate "governorate schools of "%} {{address.name}}{% endif%}
+          </div>
+  
+            <div class="row">
+                <div class="col-md-12">
+                <form method="get" id="filter-form" gov="{{gov}}" url="{%url 'schools-list2'%}">
+                   <label>{% translate "name of school" %} :</label> {{tableFilter.form.school_name}}
+                   {% if districts %}
+                   <label id="">{% translate "district" %} :</label>
+                   <select id="districts" name="school_address__district__name" style="pointer-events:all">
+                        <option value="">---------</option>
+                        {% for district in districts %}
+                        <option value="{{ district.id }}">{{ district.name }}</option>
+                        {% endfor %}
+                   </select>
+                   {% else %}
+                   <i id="dist" dist="{{dist}}"></i>
+                   {%endif%}
+                </form>
+                </div>
+            </div>
+            <div id="rafat">
+                {% include 'partial/schools.html' %}
+            </div>
+      </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+{% endblock %}
+{%block js%}
+<script>
+$('#districts').change( function(){
+    var name = $("#id_school_name").val();
+    var district = $(this).val();
+    var gov = $("#filter-form").attr('gov');
+    var url = $("#filter-form").attr('url')+"?school_name="+name+"&school_address__governorate__name="+gov+"&school_address__district__name="+district;
+    $.ajax({
+        type: 'GET',
+        url: url,  
+        success: function (data) {
+            $("#rafat").html(data);
+        }
+        });
+    
+    });
+    
+$("#id_school_name").keyup(function(){ 
+    if ( $(this).val().length >= 3 ){
+        var name = $(this).val();
+    }else{
+        var name = '';
+    }
+    var district = $("#districts").val();
+    if (district){
+          dist = district;
+    }else{
+      dist = $("#dist").attr('dist');
+    }    var gov = $("#filter-form").attr('gov');
+    var url = $("#filter-form").attr('url')+"?school_name="+name+"&school_address__governorate__name="+gov+"&school_address__district__name="+dist;
+    $.ajax({
+            type: 'GET',
+            url: url,  
+            success: function (data) {
+                $("#rafat").html(data);
+            }
+            });
+    
+});
+    
+//pagination
+$(document).on('click', '.page-link' , function () {
+  var url = $(this).attr("id");
+  var district = $("#districts").val();
+  if (district){
+        dist = district;
+  }else{
+    dist = $("#dist").attr('dist');
+  }
+  var name = $("#id_school_name").val();
+  var gov = $("#filter-form").attr('gov');
+
+  $.ajax({
+    type: 'GET',
+    url: url+"&school_address__district__name="+dist+"&school_address__governorate__name="+gov+"&school_name="+name,
+    success: function (data) {
+        $("#rafat").html(data);
+    }
+    });
+
+
+});
+</script>
+{%endblock%}

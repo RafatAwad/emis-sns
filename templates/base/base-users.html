@@ -1,0 +1,42 @@
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}" dir={% if 'ar' in LANGUAGE_CODE %}  "rtl" {% else %} "ltr" {% endif %}>
+<title>{% translate "login" %}</title>  
+<head>
+    <meta charset="utf-8">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    {% if 'ar' in LANGUAGE_CODE %} 
+    <link rel="stylesheet" href="{% static 'dist/css/style.rtl.css' %}"/>
+    <link href="{% static 'src/css/form.css' %}" rel="stylesheet">
+    {% else %}
+    <link href="{% static 'dist/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'src/css/form.css' %}" rel="stylesheet">
+    {% endif %}
+    {% include 'base/header.html' %}
+  </head>
+  <body class="app flex-row align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card-group">
+            <div class="card p-4">
+              <div class="card-body">
+                {% include 'partial/messages.html' %}
+                <br/>
+               {% block content %}{% endblock%}
+              </div>
+            </div>
+            <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+              <div class="card-body text-center img-snp">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CoreUI and necessary plugins-->
+    {% include 'base/js.html' %}
+  </body>
+</html>

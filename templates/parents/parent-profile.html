@@ -1,0 +1,70 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+{% block title %}{% translate "parent profile" %} | {{parent.parent_name}}{% endblock %}
+{% block cr %}<a href="{% url 'parents-list' %}">{% translate "parents" %}</a>/{% translate "Paernt Profile" %}- {{parent.parent_name}}{% endblock %}
+{% block content %}
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-6">
+          <h2 class="tit-3">{% translate "parent Information" %}</h2>
+          <hr>
+          <div style="font-size:24px; margin-left: 30px">
+            <pre>{% translate "Parent Name " %}: {{ parent.parent_name|default:"غير محدد" }}</pre>
+            <pre>{% translate "date of birth" %}: {{ parent.parent_date_of_birth|date:'d-m-Y'  }}</pre>
+            <pre>{% translate "place of birth" %}: {{ parent.parent_place_of_birth|default:"غير محدد" }}</pre>
+          </div>
+        </div>
+        <div class="col-6">
+          {% if request.parent.photo %}
+            <img style="height:200px;" src="{{ parent.photo.url }}" alt="Photo">
+          {%else%}
+            <img style="height:200px;" src="{% static "src/img/man.png"%}" alt="Photo">
+          {%endif%}
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="address_information">
+        <div class="row">
+          <div style="font-size:24px; margin-left: 30px">
+            <h2 class="tit-3">{% translate "More Information" %}</h2>
+            <hr>
+            <pre>{% translate "gender" %}:{{ parent.gender }}</pre>
+            <pre>{% translate "blood group" %}:{{ parent.blood_group }}</pre>
+            <pre>{% translate "show" %}:{{ parent.id_type | default:"" }} | {% if request.parent.id_file %}<a class="btn btn-primary" href="{{ parent.id_file.url }}" target="new-window">{% translate "download" %}</a>{% else%} لايوجد ملف {%endif%}</pre>
+          </div>
+        </div>
+      </div>
+      <div class="personal_information">
+        <div class="row">
+          <h2 class="tit-3">{% translate "contact info" %}</h2>
+        </div>
+        <hr>
+        <div class="row">
+          <div style="font-size:24px; margin-left: 30px">
+            <pre> {% translate "phone number" %}: {{ parent.phone_no|default:"غير محدد" }}</pre>
+            <pre> {% translate "Email" %}: {{ parent.emial|default:"لايوجد" }}</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="address_information">
+        <div class="row">
+          <h2 class="tit-3">{% translate "address info" %}</h2>
+        </div>
+        <hr>
+        <div class="row">
+          <div style="font-size:24px; margin-left: 30px">
+            <pre>{% translate "governorate" %}: {{ parent.address.governorate|default:"غير محدد" }}</pre>
+            <pre>{% translate "district" %}: {{ parent.address.district|default:"غير محدد" }}</pre>
+            <pre>{% translate "sub district" %}: {{ parent.address.sub_district|default:"غير محدد" }}</pre>
+            <pre>{% translate "village" %}: {{ parent.address.village|default:"غير محدد" }}</pre>
+            <pre>{% translate "sub village" %}: {{ parent.address.sub_village|default:"غير محدد" }}</pre>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% load static i18n %}
+{% if items %}
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-striped table-bordered datatable dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="border-collapse: collapse !important">
+            <thead>
+                <tr role="row">
+                    <th>Id</th>
+                    <th>{% translate "student name" %}</th>
+                    <th>{% translate "Reg No" %}<span class="fa fa-eye icony"></span></th>
+                    <th>{% translate "governorate" %}</th>
+                    <th>{% translate "district" %}</th>
+                    <th>{% translate "school" %}</th>
+                    <th>{% translate "Class" %}</th>
+                    <th>{% translate "spnType" %}</th>
+                    <th>{% translate "Actions" %}</th>
+                    {% if user.role.id <= 2 %}<th>{% translate "checking" %}</th>{%endif%}
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                  <tr role="row" class="odd " >
+                      <td class="{% if item.checked%} bg-success disabled {%endif%}">{{ forloop.counter }}</td>
+                      <td class="text-right">{{ item.name|default:"غير موجود" }}</td>
+                      <td direction="ltr" class="emis-id" style="font-family:code;">{{ item.emis_id|underless }}</td>
+                      <td>{{ item.address.governorate.name|default:"غير محدد" }}</td>
+                      <td>{{ item.address.district.name|default:"غير محدد"}}</td>
+                      <td>{{ item.school.school_name|default:"غير محدد" }}</td>
+                      <td>{{ item.grade|default:"غير محدد" }}</td>
+                      <td>{{ item.spn_type|default:"غير محدد" }}</td>
+                      <!--checking-->
+                      <td>
+                          <div class="btn-group">
+                              <button type="button" class="btn btn-info btn-flat dropdown-toggle fa fa-align-left" data-toggle="dropdown">
+                                <span class="sr-only">Toggle Dropdown</span>
+                              </button>
+                              <div class="dropdown-menu" role="menu">
+                                <a class="dropdown-item" href="{% url 'student-profile'  item.emis_id %}"><i class="fa fa-search-plus"></i> {% translate "Student profile" %}</a>
+                                <a class="dropdown-item" href="{% url 'student-edit' item.emis_id %}"><i class="fa fa-edit"></i> {% translate "edit student" %}</a>
+                               {% if user.role.id == 1 %}
+                               <a class="dropdown-item" id="del" href="{% url 'student-delete' item.emis_id %}"><i class="fa fa-trash-o"></i>{% translate "delete student" %}</a>
+                               {% endif %}
+
+                              </div>
+                            </div>
+                      </td>
+                      {% if user.role.id <= 2 %}
+                      <!--actions-->
+                      <td>
+                          <div class="btn-group">
+                               {% if item.checked %}<button type="button" class="btn btn-success btn-flat dropdown-toggle fa fa-align-left" data-toggle="dropdown">
+                              {% else %}<button type="button" class="btn btn-danger btn-flat dropdown-toggle fa fa-align-left" data-toggle="dropdown">{%endif%}
+                                <span class="sr-only">Toggle Dropdown</span>
+                              </button>
+                              <div class="dropdown-menu" role="menu">
+                                <a class="dropdown-item" {%if item.checked %} style="pointer-events:none;" {%endif%}href="{% url 'check-now'  item.emis_id %}"><i class="fa fa-search-plus"></i> {% translate "check now" %}</a>
+                                <a class="dropdown-item" {%if item.checked %} {% else %}style="pointer-events:none;"{%endif%}href="{% url 'recheck'  item.emis_id %}"><i class="fa fa-search-plus"></i> {% translate "re check" %}</a>
+                                <a class="dropdown-item" href="{% url 'check-edit' item.emis_id %}"><i class="fa fa-edit"></i> {% translate "edit and check" %}</a>    
+                              </div>
+                            </div>
+                      </td>
+                      {% endif %}
+                  </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% include 'partial/pagination.html' %}
+
+{% else %}
+<div class="card-body">
+    <h5>{% translate "No Student Found" %}</h5>
+</div>
+{% endif %}

@@ -1,0 +1,89 @@
+{% load static i18n%}
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}"><i class="icon-speedometer"></i> {% translate "dashboard" %}</a>
+            </li>
+
+            <!-- Administration Section Start -->
+            <li class="nav-item nav-dropdown">
+             <a class="nav-link nav-dropdown-toggle" href="#">
+                 <i class="nav-icon icon-puzzle"></i>{% translate "administrator" %}</a>
+             <ul class="nav-dropdown-items">
+                 <li class="nav-item">
+                     <a class="nav-link" href="{% url 'schools-list'%}">
+                         <i class="fa fa-plus-circle"></i>{% translate "schools" %}</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="#">
+                         <i class="fa fa-plus-circle"></i>{% translate "statics" %}</a>
+                 </li>
+             </ul>
+           </li>
+           <!-- Administration Section END -->
+
+           <!-- Student Section START -->
+           <li class="nav-item nav-dropdown">
+            <a class="nav-link nav-dropdown-toggle" href="#">
+                <i class="nav-icon icon-puzzle"></i>{% translate "students" %}</a>
+            <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'student-list' %}">
+                        <i class="fa fa-plus-circle"></i>{% translate "all students" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'schools-list' %}">
+                        <i class="fa fa-list"></i>{% translate "add student" %}</a>
+                </li>
+            </ul>
+          </li>
+          <!-- Student Section END -->
+
+           <!-- Teacher Section START -->
+           <li class="nav-item nav-dropdown">
+            <a class="nav-link nav-dropdown-toggle" href="#">
+                <i class="nav-icon icon-puzzle"></i>{% translate "teachers" %}</a>
+            <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'teacher-list' %}">
+                        <i class="fa fa-plus-circle"></i>{% translate "all teachers" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'schools-list' %}">
+                        <i class="fa fa-list"></i>{% translate "add teacher" %}</a>
+                </li>
+            </ul>
+          </li>
+          <!-- Teacher Section END -->
+
+           <!-- Employee Section START -->
+           <li class="nav-item nav-dropdown">
+            <a class="nav-link nav-dropdown-toggle" href="#">
+                <i class="nav-icon icon-puzzle"></i>{% translate "parents" %}</a>
+            <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'parents-list' %}">
+                        <i class="fa fa-plus-circle"></i>{% translate "all parents" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-list"></i>{% translate "add parent" %}</a>
+                </li>
+            </ul>
+          </li>
+          <!-- Employee Section END -->
+ 
+        <!-- User-Manual Section START -->
+        <li class="nav-item nav-dropdown">
+         <a class="nav-link" href="{% url 'update-profile' user.id %}">
+             <i class="nav-icon icon-puzzle"></i>{% translate "settings" %}</a>
+       </li>
+       <!-- User-Manual Section END -->
+        </ul>
+    </nav>
+    <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+
+    {% block sidebar %}
+    {% endblock %}
+</div>

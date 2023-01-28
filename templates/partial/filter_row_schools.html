@@ -1,0 +1,29 @@
+{% load static i18n %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="filter" load-district="{% url 'load-district'%}">
+            <form method="get" id="filterForm" load-schools={% url 'schools-list2' %}>
+                {% if user.role.id == 2 %}
+                <label>{% translate "name" %} : </label>{{ tableFilter.form.school_name }}
+                <label>{% translate "district" %} : </label>
+                <select name="school_address__district__name" id="districts">
+                    <option value="">---------</option>
+                    {% for district in districts %}
+                    <option value="{{ district.id }}">{{ district.name }}</option>
+                    {% endfor %}
+                </select>
+                {% elif user.role.id == 1 %}
+                <label>{% translate "name" %} : </label>{{ tableFilter.form.school_name }}
+                    <label>{% translate "governorate" %} : </label>{{ tableFilter.form.school_address__governorate__name }}
+                    <label>{% translate "district" %} : </label>
+                    <select name="school_address__district__name" id="districts">
+                    <option>---------</option>
+                </select>
+                {% else %}
+                    <label>{% translate "name" %} : </label>{{ tableFilter.form.school_name }}
+                {% endif%}
+            </form>
+        </div>
+
+    </div>
+</div>

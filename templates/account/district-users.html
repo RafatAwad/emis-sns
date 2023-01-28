@@ -1,0 +1,106 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+{% block title %}{% translate "districts users" %}{% endblock %}
+{% block cr %}{% translate "districts users" %}{% endblock %}
+{% block content %}
+  <div class="animated fadeIn">
+      <div class="card">
+          <div class="card-header">
+              <i class="fa fa-edit"></i>{% translate "users list" %}
+          </div>
+          <div class="card-body">
+              <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="btn btn-primary"><a href="{% url 'printf' %}" style="color:white;margin-bottom:10px;" > <span class="fa fa-book"></span> {% translate "print report" %}</a> </div>
+                        <div class="btn btn-success"><a href="{% url 'signup2' %}" style="color:white;" > <span class="fa fa-user-plus"></span>  {% translate "add user" %}</a> </div>
+                        <hr />
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                        {% include 'partial/filter_row.html' %}
+                        </div>
+                    </div>
+                  {% if items %}
+                  <div class="row">
+                      <div class="col-sm-12">
+                          <table class="table table-striped table-bordered datatable dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="border-collapse: collapse !important">
+                              <thead>
+                                  <tr role="row">
+                                      <th>Id</th>
+                                      <th>{% translate "username" %}</th>
+                                      <th>{% translate "first name" %}</th>
+                                      <th>{% translate "last name" %}</th>
+                                      <th>{% translate "email" %}</th>
+                                      <th>{% translate "role" %}</th>
+                                      <th>{% translate "work feild" %}</th>
+                                      <th>{% translate "status" %}</th>
+                                      <th>{% translate "Actions" %}</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  {% for item in items %}
+                                    <tr role="row" class="odd">
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ item.username }}</td>
+                                        <td>{{ item.first_name }}</td>
+                                        <td>{{ item.last_name }}</td>
+                                        <td>{{ item.email }}</td>
+                                        <td>{{ item.role  }}</td>
+                                        <td>{{ item.location |default:"لا يوجد" }}</td>
+                                        <td>{% if item.is_active %}<a href="{% url 'disable-user' item.id %}" class="btn btn-success enabled"> {% translate "enabled" %}</a> {% else %}<a href="{% url 'enable-user' item.id %}" class="btn btn-danger disable">{% translate "disabled" %}</a>{% endif%}</td>
+                                        <td>
+                                            <a class="btn btn-success" href="{% url 'profile' item.id %}">
+                                                <i class="fa fa-search-plus"></i>
+                                            </a>
+                                            <a class="btn btn-info" href="{% url 'update-profile' item.id %}">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="{% url 'user-delete' item.id %}">
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                  {% endfor %}
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+             {% include 'partial/pagination.html' %}
+              </div>
+          </div>
+        {% else %}
+          <div class="card-body">
+              <h3>{% translate "users not found" %}</h3>
+          </div>
+        {% endif %}
+      </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+<script>
+$(document).on('mouseover','.enabled',function(){
+    $(this).text("تعطيل");
+    $(this).addClass('btn-danger');
+    $(this).removeClass('btn-success');
+});
+$(document).on('mouseleave','.enabled',function(){
+    $(this).text("مفعل");
+    $(this).removeClass('btn-danger');
+    $(this).addClass('btn-success');
+});
+$(document).on('mouseover','.disable',function(){
+    $(this).text("تفعيل");
+    $(this).removeClass('btn-danger');
+    $(this).addClass('btn-success');
+
+});
+$(document).on('mouseleave','.disable',function(){
+    $(this).text("معطل");
+    $(this).removeClass('btn-success');
+    $(this).addClass('btn-danger');
+});
+</script>
+{%endblock%}

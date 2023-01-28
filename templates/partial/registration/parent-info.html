@@ -1,0 +1,55 @@
+{% load static i18n %}
+<div class="parent_info">
+    <div class="card">
+      <div class="card-header">{% translate "Parent Information" %}</div>
+      <div class="card-body">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-4">
+            <label>{{ parent_form.parent_name.label }}</label>{{ parent_form.parent_name }}
+          </div>
+          <div class="col-md-4 photo-dad">
+            <label>{{ parent_form.parent_photo.label }}</label>{{ parent_form.parent_photo }}
+          </div>
+          <div class="col-md-2">
+            {%if parent_form.parent_photo.url%}<img src="{{ parent_form.instance.parent_photo.url }}" style="max-height:100px;border:1px solid #000;"/>{% endif %}
+          </div>
+          <div class="col-md-2">
+            <label>{{ parent_form.parent_gender.label }}</label>{{ parent_form.parent_gender }}
+          </div>
+        </div>
+        <hr/>          
+        <div class="row">
+          <div class="col-md-3">
+            <label>{{ parent_form.parent_date_of_birth.label }}</label>{{ parent_form.parent_date_of_birth }}
+          </div>
+          <div class="col-md-3">
+            <label>{{ parent_form.parent_place_of_birth.label }}</label>{{ parent_form.parent_place_of_birth }}
+          </div>
+          <div class="col-md-3">
+            <label>{{ parent_form.id_type.label }}</label>{{ parent_form.id_type }}
+          </div>
+          <div class="col-md-3">
+            <label>{{ parent_form.id_file.label }}</label>{{ parent_form.id_file }}
+          </div>
+        </div>
+        <hr/>
+        <div class="row">
+          <div class="col-md-4">
+            <label>{{ parent_form.parent_phone_no.label }}</label>{{ parent_form.parent_phone_no }}
+          </div>
+          <div class="col-md-4">
+            <label> يسكن حالياً في محافظة :</label>
+            {{ parent_address_form.governorate}}
+          </div>
+          <div class="col-md-4">
+            <label>{% translate "district" %}</label>
+            {{ parent_address_form.district}}
+          </div>
+        </div>
+        <hr/>      
+      </div>
+    </div>
+    <button id="parent_info_prev_btn" type="button" class="btn btn-primary pull-right">{% translate "Previous" %}</button>
+    <button id="submit" type="submit" class="btn btn-primary pull-left">{% translate "submit" %}</button>
+  </div>

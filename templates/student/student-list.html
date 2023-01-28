@@ -1,0 +1,167 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+{% load custom_tags %}
+{% block title %}{% translate "students lis" %}{% endblock %}
+{% block cr %}{% translate "students lis" %}{% endblock %}
+{% block content %}
+  <div class="animated fadeIn">
+      <div class="card">
+          <div class="card-header">
+              <i class="fa fa-edit"></i> {% translate "students lis" %}
+          </div>
+
+          <div class="card-body">
+              <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    {% include 'partial/filter_row_students.html' %}
+                    <div id="rafat">
+                            {% include 'partial/students.html' %}
+                    </div>
+              </div>
+
+            </div>
+      </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+// veiw emis_code icon
+$(document).on('click','.show-code',function(){
+    $(".emis-id").attr("style","font-family :code");
+    $(this).addClass('icony fa-eye')
+    $(this).removeClass('show-code fa-eye-slash');
+
+});
+$(document).on('click','.icony',function(){
+    $(".emis-id").attr("style","font-family :simple-line-icons");
+    $(this).addClass('show-code fa-eye-slash');
+    $(this).removeClass('icony fa-eye');
+});
+
+$(document).on('click','#del',function(){
+    $(".emis-id").attr("style","font-family :simple-line-icons");
+    $(this).addClass('show-code fa-eye-slash');
+    $(this).removeClass('icony fa-eye');
+});
+
+
+$('#id_grade').change( function(){
+    var year = $("#id_year").val();
+    var name = $("#id_name").val();
+    var grade = $(this).val();
+    var url = $(".filter-row").attr('url-get')+"?year="+year+"&name="+name+"&grade="+grade
+    $.ajax({
+        type: 'GET',
+        url: url,  
+        success: function (data) {
+            $("#rafat").html(data);
+        }
+        });
+
+});
+
+$("#id_name").keyup(function(){ 
+    if ( $(this).val().length >= 3 ){
+        var name = $(this).val();
+    }else{
+        var name = '';
+    }
+    var year = $("#id_year").val();
+    var grade = $('#id_grade').val();
+    var url = $(".filter-row").attr('url-get')+"?year="+year+"&name="+name+"&grade="+grade;
+    $.ajax({
+            type: 'GET',
+            url: url,  
+            success: function (data) {
+                $("#rafat").html(data);
+            }
+            });
+
+});
+
+// change  governorate
+$(document).on('change','#id_address__governorate__name',function(){
+    var url = $("#filterForm").attr("load-district");
+    var name = $("#id_name").val();
+    var grade = $("#id_grade").val();
+    var year = $("#id_year").val();
+    var governorateId = $(this).val();
+    var district = $("#districts").val();
+    var url2 = $(".filter-row").attr('url-get')+"?name="+name+"&address__governorate__name="+governorateId+"&address__district__name=&grade="+grade+"&year="+year;
+
+    $.ajax({
+      url: url,
+      data: {
+        'governorate': governorateId,
+      },       
+  
+      success: function (data) {
+        $("#districts").html(data);
+      }
+    });
+    $.ajax({
+      type: 'GET',
+      url: url2,  
+      success: function (data) {
+          $("#rafat").html(data);
+      }
+      });
+});
+
+
+//change district
+$('#districts').change( function(){
+    var district = $(this).val();
+    var name = $("#id_name").val();
+    var grade = $("#id_grade").val();
+    var year = $("#id_year").val();
+    var gov = $("#id_address__governorate__name").val();
+    var url = $(".filter-row").attr('url-get')+"?name="+name+"&address__governorate__name="+gov+"&address__district__name="+district+"&grade="+grade+"&year="+year;
+    $.ajax({
+        type: 'GET',
+        url: url,  
+        success: function (data) {
+            $("#rafat").html(data);
+        }
+        });
+  
+  });
+
+
+
+// change year
+$('#id_year').change( function(){
+var year = $(this).val();
+var name = $("#id_name").val();
+var grade = $("#id_grade").val();
+var district = $("#districts").val();
+var gov = $("#id_address__governorate__name").val();
+var url = $(".filter-row").attr('url-get')+"?name="+name+"&address__governorate__name="+gov+"&address__district__name="+district+"&grade="+grade+"&year="+year;
+$.ajax({
+    type: 'GET',
+    url: url,  
+    success: function (data) {
+        $("#rafat").html(data);
+    }
+    });
+
+});
+
+//pagination
+$(document).on('click', '.page-link' , function () {
+    var url = $(this).attr("id");
+    var year = $("#id_year").val();
+    var name = $("#id_name").val();
+    var grade = $("#id_grade").val();
+    var dist = $("#districts").val();
+    var gov = $("#id_address__governorate__name").val();
+  
+    $.ajax({
+      type: 'GET',
+      url: url+"&year="+year+"&name="+name+"&grade="+grade+"&address__district__name="+dist+"&address__governorate__name="+gov,
+      success: function (data) {
+          $("#rafat").html(data);
+      }
+      });
+  });
+  
+  </script>
+{% endblock %}

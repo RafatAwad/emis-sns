@@ -1,0 +1,41 @@
+{% load static i18n %}
+<div class="address_info">
+    <div class="card">
+      <div class="card-header">{% translate "Address Information" %}</div>
+      <div class="card-body">
+        {% csrf_token %}
+        <div class="row">
+        <div class="col-md-3">
+          <label for="id_governorate">{% translate "governorate" %}</label>
+          {{ address_form.governorate }}
+        </div>
+        <div class="col-md-3">
+          <label for="id_district">{% translate "district" %}</label>
+        <select name="district" class="form-control" id="id_district">
+        </select>
+      </div>
+      <div class="col-md-3">
+          <label for="id_sub_district">{% translate "sub district" %}</label>
+        <select name="sub_district" class="form-control" id="id_sub_district">
+        </select>
+      </div>
+      <div class="col-md-3">
+          <label for="id_village">{% translate "village" %}</label>
+        <select name="village" class="form-control" id="id_village">
+        </select>
+      </div>
+      <div class="col-md-3">
+          <label for="id_sub_village">{% translate "sub village" %}</label>
+        <select name="sub_village" class="form-control" id="id_sub_village">
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label for="id_school">{% translate "school" %}</label>
+        <select name="school" class="form-control" id="id_school">
+        </select>
+      </div>
+    </div>     
+    </div>
+    </div>
+    <button id="address_info_btn" type="button" class="btn btn-primary pull-left disabled" style="pointer-events:none">{% translate "Next" %}</button>
+  </div>

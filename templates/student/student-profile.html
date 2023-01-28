@@ -1,0 +1,84 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+{% block title %}الملف الشخصي{% endblock %}
+{% block cr %}<a href="{% url 'student-list' %}">{% translate "students" %}</a>/{% translate "students Profile" %}{% endblock %}
+{% block content %}
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-9">
+          <h2 class="tit-3">{% translate "student info" %}</h2>
+          <hr>
+          <div style="font-size:24px; margin-left: 30px">
+            <pre>{% translate "name" %} : {{ student.name }}</pre>
+            <pre>{% translate "student emis code" %}  : {{ student.emis_id|underless }}</pre>
+            <pre>{% translate "gender" %} : {{ student.gender.name }}</pre>
+          </div>
+        </div>
+        <div class="col-3">
+          {% if student.photo %}
+             <img style="max-height:100%; max-width:100%" src="{{ student.photo.url }}" alt="Photo">
+          {% else %}
+              <img style="max-height:100%; max-width:100%" src="{% static "src/img/man.png"%}" alt="Photo">
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="personal_information">
+        <div class="row">
+          <h2 class="tit-3">{% translate "school info" %}</h2>
+        </div>
+        <hr>
+        <div class="row">
+          <div style="font-size:24px; margin-left: 30px">
+            <pre> {% translate "school name" %} : {{ student.school.school_name }}</pre>
+            <pre>{% translate "grade" %}  : {{ student.grade.name }}</pre>
+            <pre>{% translate "edu year" %} : {{ student.year.name }}</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="address_information">
+        <div class="row">
+          <h2 class="tit-3"> {% translate "address info" %} </h2>
+        </div>
+        <hr>
+        <div class="row">
+          <div style="font-size:24px; margin-left: 30px">
+            <pre>{% translate "governorate" %}:{{ student.address.governorate.name }}</pre>
+            <pre>{% translate "district" %}: {{ student.address.district.name }}</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="address_information">
+        <div class="row">
+          <h2 class="tit-3"> {% translate "documents" %} </h2>
+        </div>
+        <hr>
+        <div class="row">
+          <div style="font-size:24px; margin-left: 30px">
+            <pre> {% translate "birth certificate" %} :  {% if student.documents.birth_certificate %}<a class="btn btn-primary" href="{{ student.documents.birth_certificate.url }}" target="new-window">{% translate "download" %}</a>{% endif %} </pre>
+          </div>
+        </div>
+      </div>
+  
+      <div class="address_information">
+        <div class="row">
+          <h2 class="tit-3"> {% translate "parent information" %} </h2>
+        </div>
+        <hr>
+        <div class="row">
+          <div style="font-size:24px; margin-left: 30px">
+            <pre> {% translate "parent name" %} : {{ student.parent.parent_name }}</pre>
+            <pre> {% translate "phone number" %} : {{ student.parent.parent_phone_no }}</pre>
+            <pre> {% translate "id type" %} : {{ student.parent.id_type }}</pre>
+            <pre> {% translate "id file" %} :  {% if student.parent.id_file %}<a class="btn btn-primary" href="{{ student.parent.id_file.url }}" target="new-window">{% translate "download" %}</a>{% endif%}</pre>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

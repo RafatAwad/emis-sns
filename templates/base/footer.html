@@ -1,0 +1,7 @@
+{% load i18n %}
+<footer class="app-footer">
+    <span><a href="#">{% trans "PSN data entry system" %}</a> © {% now "Y" %}</span>
+    <span class="ml-auto">{% trans "Powered by" %} <a href="#">digital media</a></span>
+    {% block extrafooter %}
+    {% endblock %}
+</footer>

@@ -1,0 +1,25 @@
+**/.venv
+**/django_app.log*
+**/web_app_config_local.json
+**/assets/css/app.css*
+**/assets/js/app.js*
+**/node_modules/
+**/logs/*
+**/__pycache__/**
+*-checkpoint.ipynb
+~$*
+*.tmp
+**/.envrc
+dist/
+db.sqlite3
+# coverage files
+.coverage
+**/coverage_html_report/*
+media
+# migrations
+**/migrations/*.py
+
+# local config
+web_app_config_local
+.direnv
+direnv

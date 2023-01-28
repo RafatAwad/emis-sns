@@ -1,0 +1,70 @@
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir={% if 'ar' in LANGUAGE_CODE %}  "rtl" {% else %} "ltr" {% endif %}>
+    <title> {% translate "Emis - SNS" %} | {% block title %}{% endblock %}</title>
+
+{% include 'base/header.html' %}
+{% block head %}{% endblock%}
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+<!--Navbar-->
+{% include 'base/navbar.html' %}
+
+<div class="app-body">
+    <!--Sidebar-->
+    {% if user.role.id == 1 %}
+        {% include 'base/sidebar.html' %}
+    {% elif user.role.id == 2 %}
+        {% include 'base/sidebar2.html' %}
+    {% else %}
+        {% include 'base/sidebar3.html' %}
+    {% endif %}
+
+    <!-- Main content -->
+    <main class="main">
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %} ">{% trans 'Home' %}</a></li>
+            <li class="breadcrumb-item active">{% block cr %}{% endblock %}</li>
+        
+            <!-- Breadcrumb Menu-->
+            <li class="breadcrumb-menu d-md-down-none">
+                <div class="btn-group" role="group" aria-label="Button group">
+                    <a class="btn" href="{% url 'home' %}"><i class="icon-graph"></i> &nbsp;{% translate "dashboard" %}</a>
+                    {% if user.role.id == 1 %}
+                        <a class="btn" href="{% url 'admin:index' %}"><i class="icon-settings"></i> &nbsp;{% translate "Settings" %}</a>
+                    {% endif%}
+                </div>
+            </li>
+        
+        
+            
+        </ol>
+
+        <!-- Page contents -->
+        <div class="container-fluid">
+            <div class="animated fadeIn">
+                {% include 'partial/messages.html' %}
+                {% block content %}
+                {% endblock %}
+            </div>
+
+        </div>
+        <!-- /.conainer-fluid -->
+    </main>
+
+
+    <!--Aside bar-->
+    {% include 'base/asidebar.html' %}
+
+</div>
+
+<!--Footer-->
+{% include 'base/footer.html' %}
+
+<!--JS-->
+{% include 'base/js.html' %}
+{% block js %}{% endblock%}
+
+</body>
+</html>

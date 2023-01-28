@@ -1,0 +1,56 @@
+{% extends 'base/base.html' %}
+{% load static i18n%}
+
+{% block content %}  
+<div class = "container">  
+  <h2>{% translate "Sign up" %}</h2>  
+  <form method="post" enctype="multipart/form-data" id="TeacherRegistrationForm" address-teacher={% url 'address-teacher'%} >  
+    {% csrf_token %}  
+    <div class="row">
+        <div class="col-md-6">
+            <p> {% translate "username" %} : {{ form.username}} </p>
+            <p style="color:red">{{ form.username.errors}}</p>
+        </div> 
+        <div class="col-md-6">
+            <p> {% translate "email" %} : {{ form.email}} </p>
+            <p style="color:red">{{ form.email.errors}}</p>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-6">
+            <p> {% translate "password1" %} : {{ form.password1}}</p>
+            <p style="color:red">{{ form.password1.errors}}</p>
+            <p> {% if form.password1.help_text %} 
+                <small >{{ form.password1.help_text }}</small>  
+              {% endif %}  </p>
+        </div> 
+        <div class="col-md-6">
+            <p> {% translate "password2" %} : {{ form.password2}}</p>
+            <p style="color:red">{{ form.password2.errors}}</p>
+            <p> {% if form.password2.help_text %} 
+                <small >{{ form.password2.help_text }}</small>  
+              {% endif %}  </p>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-6">
+            <p> {% translate "Role" %} : {{ form.role}} </p>
+        </div> 
+        <div class="col-md-6">
+            <pre> {% translate "governorate" %} : {{ location.governorate}}  </pre>
+            <pre> <label for="id_district">{% translate "district" %}</label>
+                <select name="district" class="form-control" id="id_district">
+                </select>
+            </pre>
+        </div>
+    </div>
+    <hr/>
+    <button class="btn btn-primary" type="submit">{% translate "Sign up" %}</button>  
+  </form>  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="{% static 'src/js/registration.js' %}"></script>
+  <script src="{% static 'src/js/teacher-address.js' %}"></script>
+</div>  
+{% endblock %}  

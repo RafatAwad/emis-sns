@@ -1,0 +1,130 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+{% block title %}
+    {% if user.role.id == 2 %}
+       {% translate "governorate districts" %}
+    {% else %}
+        {% translate "governorates" %}
+    {%endif%}
+{% endblock %}
+{% block cr %}
+    {% if user.role.id == 2 %}
+       {% translate "governorate districts" %}
+    {% else %}
+        {% translate "governorates" %}
+    {%endif%}
+{% endblock %}
+
+ 
+{% block content%}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+              {% if user.role.id == 2 %}
+                <h3 class="card-title">مديريات محافظة - {{ user.location.name}} </h3>
+              {% else %}
+                <h3 class="card-title">محافظات الجمهورية</h3>
+              {% endif %}
+              </div>
+              <div class="card-body carousel slide MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
+                  <a class=" carousel-control-prev  leftLst"  role="button">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">{% translate "Previous" %}</span>
+                  </a>
+                  
+                  <a class="carousel-control-next  rightLst" role="button" >
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">{% translate "Next" %}</span>
+                  </a>
+                <ul class="MultiCarousel-inner pagination pagination-month justify-content-center"  data-touch="true">
+                  {% for address in addresses %}
+                  <li class="page-item item">
+                  <a class="page-link" href="{% url 'governorate-schools' address.id %}">
+                      <p class="page-month">{{address.name}}</p>
+                      <p class="page-year">{{address.id}}</p>
+                  </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gov-det">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <i class="fa fa-chart-bar"></i>
+                    {% translate "governorate info " %}
+                  </h3>
+  
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                      <i class="fa fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div id="donut-chart" style="height: 300px;"></div>
+                </div>
+                <!-- /.card-body-->
+              </div>
+          </div>
+          <!-- /.col -->
+
+          <div class="col-md-6">
+            <!-- Bar chart -->
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fa fa-chart-bar"></i>
+                  {% translate "عدد طلاب المحافظات" %}
+                </h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fa fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div id="bar-chart" style="height: 300px;"></div>
+              </div>
+              <!-- /.card-body-->
+            </div>
+            <!-- /.card -->
+
+          </div>
+          <!-- /.col -->
+        </div>
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+</body>
+{% endblock content%}
+{% block js %}
+    <script src="{% static 'src/js/carousel.js' %}"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+{% endblock%}

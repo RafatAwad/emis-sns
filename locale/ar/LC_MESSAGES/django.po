@@ -1,0 +1,1372 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-26 12:05+0300\n"
+"PO-Revision-Date: 2023-01-27 18:58+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: account/admin.py:18
+msgid "password"
+msgstr "كلمة المرور"
+
+#: account/admin.py:19
+msgid "Password confirmation"
+msgstr "تأكيد كلمة المرور"
+
+#: account/filters.py:10 parent/utils.py:15 student/filters.py:11
+#: student/forms.py:105 student/forms.py:130 student/models.py:93
+#: student/utils.py:15 teachers/forms.py:53 teachers/utils.py:15
+#: templates/partial/filter_row_schools.html:7
+#: templates/partial/filter_row_schools.html:16
+#: templates/partial/filter_row_schools.html:23
+#: templates/partial/filter_row_students.html:7
+#: templates/student/student-profile.html:13
+msgid "name"
+msgstr "الاسم"
+
+#: account/filters.py:11 account/models.py:43
+#: templates/account/district-users.html:36
+#: templates/account/users-list.html:33
+msgid "role"
+msgstr "المسؤولية"
+
+#: account/filters.py:12 address/models.py:11 address/models.py:21
+#: student/filters.py:9 student/filters.py:24 student/forms.py:17
+#: student/forms.py:28 student/forms.py:43 teachers/forms.py:15
+#: teachers/forms.py:30 templates/account/signup.html:42
+#: templates/parents/parent-profile.html:59
+#: templates/partial/filter_row_schools.html:17
+#: templates/partial/filter_row_students.html:24
+#: templates/partial/registration/address-info.html:9
+#: templates/partial/schools.html:13 templates/partial/students.html:11
+#: templates/partial/teachers.html:14 templates/student/student-profile.html:49
+msgid "governorate"
+msgstr "المحافظة"
+
+#: account/forms.py:18 account/forms.py:31 account/forms.py:42
+#: account/forms.py:66 templates/account/district-users.html:32
+#: templates/account/profile.html:32 templates/account/signup.html:11
+#: templates/account/signup2.html:11 templates/account/users-list.html:29
+msgid "username"
+msgstr "اسم المستخدم"
+
+#: account/forms.py:19 account/forms.py:32 account/forms.py:43
+#: templates/account/district-users.html:35 templates/account/signup.html:15
+#: templates/account/signup2.html:15 templates/account/users-list.html:32
+msgid "email"
+msgstr "البريد الالكتروني"
+
+#: account/forms.py:73
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: account/models.py:11
+msgid "Users must have an email address"
+msgstr "المستخدمين يتوجب أن يكون لديهم بريد الكتروني"
+
+#: account/models.py:44
+msgid "roles"
+msgstr "المسؤوليات"
+
+#: account/models.py:47
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: account/models.py:48 templates/parents/parent-profile.html:47
+msgid "Email"
+msgstr "البريد الالكتروني"
+
+#: account/models.py:49
+msgid "First Name"
+msgstr "الاسم الأول"
+
+#: account/models.py:50
+msgid "Last Name"
+msgstr "الاسم الأخير"
+
+# navbar
+#: account/models.py:51
+msgid "Profile Photo"
+msgstr "صورة الملف الشخصي"
+
+#: account/models.py:52 parent/models.py:19 student/forms.py:106
+#: student/forms.py:134 student/models.py:69
+#: templates/parents/parent-profile.html:46 templates/partial/parents.html:11
+#: templates/partial/schools.html:16 templates/student/student-profile.html:75
+msgid "phone number"
+msgstr "رقم المحمول"
+
+#: account/models.py:53 templates/account/district-users.html:37
+#: templates/account/users-list.html:34
+msgid "work feild"
+msgstr "موقع العمل"
+
+#: account/models.py:55
+msgid "Date Added"
+msgstr "تاريخ الإضافة"
+
+#: account/models.py:83
+msgid "user"
+msgstr "المستخدم"
+
+#: account/models.py:84 templates/account/password_reset.html:4
+#: templates/account/password_reset_confirm.html:4
+#: templates/account/profile.html:4 templates/account/update-profile.html:4
+#: templates/base/sidebar.html:53
+msgid "users"
+msgstr "المستخدمين"
+
+#: account/views.py:52
+msgid "Thank you for your email confirmation. Now you can login your account."
+msgstr "نشكرك على تأكيد حسابك, يمكنك الآن تسجيل الدخول إلى حسابك."
+
+#: account/views.py:55
+msgid "Activation link is invalid! please re confirmation proccess"
+msgstr "رابط تأكيد الحساب غير فعال! الرجاء إعادة عملية التأكيد"
+
+#: account/views.py:76 account/views.py:122
+msgid "Activation link has been sent to your email id"
+msgstr "أرسلنا رابط تأكيد الحساب إلى بريدك الالكتروني, تحقق من صندوق الوارد"
+
+#: account/views.py:92 account/views.py:137
+msgid "user have to confirm his email before login"
+msgstr "يتوجب على المستخدم الجديد أن يأكد حسابه حتى بتمكن من الدخول"
+
+#: account/views.py:94 account/views.py:139
+msgid "error oops"
+msgstr "المعذرة حصل خطأ"
+
+#: account/views.py:196
+msgid ""
+" We ve emailed you instructions for setting your password, if an account "
+"exists with the email you entered You should receive them shortly.<br>If you "
+"dont receive an email, please make sure you've entered the address you "
+"registered with, and check your spam folder."
+msgstr ""
+" قمنا بإرسال بريد الكتروني يحتوي على طريقة إعداد كلمة مرورك, إذا كان بريدك "
+"الالكتروني صحيح ومسجل لدينا سيصل إليه رسالة الكترونية تحتوي على رابط<br> إذا "
+"لم تصلك رسالة فقم بإعادة إدخال بريدك الالكتروني بشكل صحيح, أو تأكد من "
+"الرسائل المزعجة."
+
+#: account/views.py:200
+msgid "Problem sending reset password email, <b>SERVER PROBLEM</b>"
+msgstr "حصل خطأ عند إرسال بريد استعادة كلمة المرور <br> خطأ من السرفر"
+
+#: account/views.py:202
+msgid "email not exsist"
+msgstr "البريد الذي أدخلته غير موجود"
+
+#: account/views.py:230
+msgid "Your password has been set. You may go ahead and <b>log in </b> now."
+msgstr "تمت عملية إعداد كلمة مرورك بنجاح, يمكنك الاستمرار لتسجيل الدخول حالا."
+
+#: account/views.py:239
+msgid "Link is expired"
+msgstr "الرابط منتهي"
+
+#: account/views.py:241
+msgid "Something went wrong, redirecting back to Homepage"
+msgstr "حدث خطأ ما, إعادة توجيه إلى الصفحة الرئيسية"
+
+#: account/views.py:251
+msgid "Your password has been changed"
+msgstr "كلمة مرورك تغيرت"
+
+#: account/views.py:300
+msgid "user info updated successfully"
+msgstr "تم تحديث معلومات المستخدم بنجاح"
+
+#: account/views.py:305
+msgid "user info not updated !!"
+msgstr "لم تتم عملية تحديث معلومات المستخدم!!"
+
+#: account/views.py:327
+msgid "Login successfull"
+msgstr "تم تسجيل الدخول بنجاح"
+
+#: account/views.py:329
+msgid "Invalid credentials, Please check username/email or password. "
+msgstr ""
+"معطيات خاطئة, الرجاء التحقق من اسم المستخدم / البريد الالكتروني أو كلمة "
+"السر. "
+
+#: address/models.py:6
+msgid "location type"
+msgstr "نوع العنوان"
+
+#: address/models.py:6
+msgid "location types "
+msgstr "أنواع العناوين "
+
+#: address/models.py:10
+msgid "governorate code"
+msgstr "رمز المحافظة"
+
+#: address/models.py:12 address/models.py:96
+msgid "notes"
+msgstr "الملاحظات"
+
+#: address/models.py:22 templates/base/sidebar.html:17
+#: templates/home/governorate.html:7 templates/home/governorate.html:14
+msgid "governorates"
+msgstr "المحافظات"
+
+#: address/models.py:25
+msgid "district code"
+msgstr "رمز المديرية"
+
+#: address/models.py:26 address/models.py:36 student/filters.py:10
+#: student/filters.py:25 student/forms.py:44 teachers/forms.py:31
+#: templates/account/signup.html:43 templates/parents/parent-profile.html:60
+#: templates/partial/filter_row_schools.html:8
+#: templates/partial/filter_row_schools.html:18
+#: templates/partial/filter_row_students.html:14
+#: templates/partial/filter_row_students.html:25
+#: templates/partial/registration/address-info.html:13
+#: templates/partial/schools.html:14 templates/partial/students.html:12
+#: templates/partial/teachers.html:15 templates/student/schools-list2.html:17
+#: templates/student/student-profile.html:50
+msgid "district"
+msgstr "المديرية"
+
+#: address/models.py:37
+msgid "districts"
+msgstr "المديريات"
+
+#: address/models.py:40
+msgid "subdistrict code"
+msgstr "رمز العزلة"
+
+#: address/models.py:41 address/models.py:52
+msgid "subdistrict"
+msgstr "العزلة"
+
+#: address/models.py:53
+msgid "subdistricts"
+msgstr "العزل"
+
+#: address/models.py:55
+msgid "village code"
+msgstr "رمز القرية"
+
+#: address/models.py:56 address/models.py:68 student/forms.py:46
+#: teachers/forms.py:33 templates/parents/parent-profile.html:62
+#: templates/partial/registration/address-info.html:23
+msgid "village"
+msgstr "القرية"
+
+#: address/models.py:69
+msgid "villages"
+msgstr "القرى"
+
+#: address/models.py:71
+msgid "subvillage code"
+msgstr "رمز المحلة"
+
+#: address/models.py:72 address/models.py:85
+msgid "subvillage"
+msgstr "المحلة"
+
+#: address/models.py:86
+msgid "subvillages"
+msgstr "المحلات"
+
+#: address/models.py:88
+msgid "ID"
+msgstr "المعرف"
+
+#: address/models.py:90 templates/partial/parents.html:10
+#: templates/partial/teachers.html:9
+msgid "Name"
+msgstr "الاسم"
+
+#: address/models.py:104 student/forms.py:107 student/forms.py:135
+msgid "address"
+msgstr "العنوان"
+
+#: address/models.py:105
+msgid "addresses"
+msgstr "العناوين"
+
+#: parent/models.py:8
+msgid "ID Type "
+msgstr "نوع وثيقة الهوية "
+
+#: parent/models.py:8
+msgid "ID Types"
+msgstr "أنواع وثيقة الهوية"
+
+#: parent/models.py:14 student/models.py:95 teachers/models.py:18
+#: templates/parents/parent-profile.html:14
+msgid "date of birth"
+msgstr "تاريخ الميلاد"
+
+#: parent/models.py:15 student/models.py:96
+msgid "Place of birth"
+msgstr "مكان الميلاد"
+
+#: parent/models.py:18 student/forms.py:133
+#: templates/student/student-profile.html:77
+msgid "id file"
+msgstr "ملف الهوية الشخصية"
+
+#: parent/models.py:20 teachers/models.py:24
+msgid "place of live"
+msgstr "محل السكن"
+
+#: parent/models.py:22 student/models.py:120 teachers/models.py:27
+msgid "Add date "
+msgstr "أضف تاريخ "
+
+#: parent/models.py:28
+msgid "parent"
+msgstr "ولي الأمر"
+
+#: parent/models.py:29 templates/base/sidebar.html:95
+#: templates/base/sidebar2.html:67 templates/base/sidebar3.html:63
+#: templates/parents/parent-edit.html:4 templates/parents/parent-profile.html:4
+#: templates/parents/parent-registration.html:4
+msgid "parents"
+msgstr "أولياء الأمور"
+
+#: student/filters.py:12 templates/partial/filter_row_students.html:12
+#: templates/student/student-profile.html:37
+msgid "edu year"
+msgstr "العام الدراسي"
+
+#: student/filters.py:13 student/forms.py:82
+#: templates/partial/filter_row_students.html:13
+#: templates/partial/filter_row_students.html:23
+#: templates/student/student-profile.html:36
+msgid "grade"
+msgstr "الصف"
+
+#: student/filters.py:19 templates/partial/filter_row_students.html:22
+msgid "year"
+msgstr "سنة"
+
+#: student/forms.py:45 teachers/forms.py:32
+#: templates/parents/parent-profile.html:61
+#: templates/partial/registration/address-info.html:18
+msgid "sub district"
+msgstr "العزلة"
+
+#: student/forms.py:47 teachers/forms.py:34
+#: templates/parents/parent-profile.html:63
+#: templates/partial/registration/address-info.html:28
+msgid "sub village"
+msgstr "المحلة"
+
+#: student/forms.py:77 student/forms.py:131 teachers/forms.py:58
+#: templates/parents/parent-profile.html:33 templates/partial/schools.html:15
+#: templates/partial/teachers.html:12 templates/student/student-profile.html:15
+msgid "gender"
+msgstr "الجنس"
+
+#: student/forms.py:78 student/forms.py:109 templates/partial/schools.html:17
+msgid "shift"
+msgstr "الفترة"
+
+#: student/forms.py:79
+msgid "Type of Disability"
+msgstr "نوع الإعاقة"
+
+#: student/forms.py:80 student/models.py:28
+msgid "relation"
+msgstr "قرابة ولي الأمر بالطالب"
+
+#: student/forms.py:81 student/models.py:79
+#: templates/partial/registration/address-info.html:33
+#: templates/partial/students.html:13
+msgid "school"
+msgstr "المدرسة"
+
+#: student/forms.py:108
+msgid "school gender"
+msgstr "جنس المدرسة"
+
+#: student/forms.py:110 student/models.py:10 templates/partial/schools.html:18
+msgid "levels"
+msgstr "المستويات"
+
+#: student/forms.py:129
+msgid "photo"
+msgstr "الصورة الشخصية"
+
+#: student/forms.py:132 templates/student/student-profile.html:76
+msgid "id type"
+msgstr "نوع الهوية"
+
+#: student/models.py:7
+msgid "gender "
+msgstr "الجنس "
+
+#: student/models.py:7
+msgid "genders"
+msgstr "الأجناس"
+
+#: student/models.py:10
+msgid "level "
+msgstr "المستوى "
+
+#: student/models.py:13
+msgid "type of Disability"
+msgstr "نوع الإعاقة"
+
+#: student/models.py:13
+msgid "types of disabilities "
+msgstr "أنواع الإعاقات "
+
+#: student/models.py:16
+msgid "grade "
+msgstr "الصف "
+
+#: student/models.py:16
+msgid "grades"
+msgstr "الصفوف"
+
+#: student/models.py:19
+msgid "year "
+msgstr "السنة "
+
+#: student/models.py:19
+msgid "years"
+msgstr "السنوات"
+
+#: student/models.py:22
+msgid "shift "
+msgstr "الفترة "
+
+#: student/models.py:22
+msgid "shifts"
+msgstr "الفترات"
+
+#: student/models.py:25
+msgid "school Gender "
+msgstr "جنس المدرسة "
+
+#: student/models.py:25
+msgid "School genders"
+msgstr "أجناس المدرسة"
+
+#: student/models.py:28
+msgid "relations"
+msgstr "قرابة ولي الأمر بالطالب"
+
+#: student/models.py:30
+msgid "rural"
+msgstr "حضر أو ريف"
+
+#: student/models.py:30
+msgid "rurals"
+msgstr "حضر أو ريف"
+
+#: student/models.py:32
+msgid "family status"
+msgstr "حالة العائلة"
+
+#: student/models.py:32
+msgid "families status"
+msgstr "حالات العوائل"
+
+#: student/models.py:35
+msgid "live with"
+msgstr "يعيش مع"
+
+#: student/models.py:37
+msgid "socity type"
+msgstr "نوع المجتمع"
+
+#: student/models.py:37
+msgid "socities types"
+msgstr "أنواع المجتمع"
+
+#: student/models.py:66 templates/partial/schools.html:12
+msgid "school code"
+msgstr "رمز المدرسة"
+
+#: student/models.py:67 templates/student/student-profile.html:35
+msgid "school name"
+msgstr "اسم المدرسة"
+
+#: student/models.py:80 templates/base/sidebar.html:21
+#: templates/base/sidebar2.html:20 templates/base/sidebar3.html:16
+#: templates/student/school-edit.html:4 templates/student/school-profile.html:4
+msgid "schools"
+msgstr "المدارس"
+
+#: student/models.py:83 templates/student/student-profile.html:62
+msgid "birth certificate"
+msgstr "شهادة الميلاد"
+
+#: student/models.py:84
+msgid "last result"
+msgstr "النتيجة الأخيرة"
+
+#: student/models.py:85
+msgid "other certificate"
+msgstr "شهادات أخرى"
+
+#: student/models.py:88
+msgid "document"
+msgstr "وثيقة"
+
+#: student/models.py:89 templates/student/student-profile.html:57
+msgid "documents"
+msgstr "الوثائق"
+
+#: student/models.py:92
+msgid "Emis id"
+msgstr "رقم الطالب"
+
+#: student/models.py:94
+msgid "student photo"
+msgstr "صورة الطالب"
+
+#: student/models.py:101
+msgid "father jop"
+msgstr "وظيفة الأب"
+
+#: student/models.py:102
+msgid "mother name"
+msgstr "اسم الأم"
+
+#: student/models.py:103
+msgid "mother work"
+msgstr "عمل الأم"
+
+#: student/models.py:108
+msgid "diseases"
+msgstr "الأمراض"
+
+#: student/models.py:116
+msgid "skills"
+msgstr "المهارات"
+
+#: student/models.py:117 templates/partial/students.html:17
+msgid "checking"
+msgstr "تحقق"
+
+#: student/models.py:119
+msgid "checking date "
+msgstr "تاريخ المراجعة "
+
+#: student/models.py:122
+msgid "Note"
+msgstr "ملاحظة"
+
+#: student/models.py:131
+msgid "Student"
+msgstr "طالب"
+
+#: student/models.py:132
+msgid "Students"
+msgstr "الطلاب"
+
+#: student/views.py:299
+msgid "student checked successfully"
+msgstr "تمت عملية مراجعة معلومات الطالب بنجاح"
+
+#: teachers/forms.py:54
+msgid "tqual"
+msgstr "مؤهلات المعلم"
+
+#: teachers/forms.py:55
+msgid "teacher courses"
+msgstr "دورات المعلم التدريبية"
+
+#: teachers/forms.py:56
+msgid "trining type"
+msgstr "نوع التدريب"
+
+#: teachers/forms.py:57 teachers/models.py:19
+#: templates/partial/teachers.html:11
+msgid "date of hire"
+msgstr "تاريخ التوظيف"
+
+#: teachers/models.py:8
+msgid "qualification "
+msgstr "المؤهل "
+
+#: teachers/models.py:8
+msgid "qualifications"
+msgstr "المؤهلات"
+
+#: teachers/models.py:11
+msgid "object"
+msgstr "المادة الدراسية"
+
+#: teachers/models.py:11
+msgid "objects"
+msgstr "المواد الدراسية"
+
+#: teachers/models.py:15
+msgid "job id"
+msgstr "الرقم الوظيفي"
+
+#: teachers/models.py:23
+msgid "training type"
+msgstr "نوع التدريب"
+
+#: teachers/models.py:35
+msgid "teacher"
+msgstr "المعلم"
+
+#: teachers/models.py:36 templates/base/sidebar.html:78
+#: templates/base/sidebar2.html:50 templates/base/sidebar3.html:46
+msgid "teachers"
+msgstr "المعلمين"
+
+#: templates/account/acc_active_email.html:3
+msgid "Hi"
+msgstr "مرحبا"
+
+#: templates/account/acc_active_email.html:4
+msgid "Please click on the link to confirm your registration,"
+msgstr "الرجاء الضغط على الرابط لتأكيد تسجيلك ،"
+
+#: templates/account/district-users.html:3
+#: templates/account/district-users.html:4
+msgid "districts users"
+msgstr "مدخلي بيانات المديريات"
+
+#: templates/account/district-users.html:9 templates/account/users-list.html:9
+msgid "users list"
+msgstr "قائمة المستخدمين"
+
+#: templates/account/district-users.html:15
+#: templates/account/users-list.html:15 templates/parents/parents-list.html:15
+msgid "print report"
+msgstr "طباعة تقرير"
+
+#: templates/account/district-users.html:16
+#: templates/account/users-list.html:16 templates/base/sidebar.html:69
+msgid "add user"
+msgstr "إضافة مستخدم"
+
+#: templates/account/district-users.html:33 templates/account/profile.html:34
+#: templates/account/users-list.html:30
+msgid "first name"
+msgstr "الاسم الأول"
+
+#: templates/account/district-users.html:34 templates/account/profile.html:36
+#: templates/account/users-list.html:31
+msgid "last name"
+msgstr "الاسم الأخير"
+
+#: templates/account/district-users.html:38
+#: templates/account/users-list.html:35
+msgid "status"
+msgstr "الحالة"
+
+#: templates/account/district-users.html:39
+#: templates/account/users-list.html:36 templates/partial/parents.html:14
+#: templates/partial/schools.html:19 templates/partial/students.html:16
+#: templates/partial/teachers.html:16
+msgid "Actions"
+msgstr "الإجراءات"
+
+#: templates/account/login.html:4 templates/account/login.html:30
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: templates/account/login.html:5
+msgid "Sign In to your account"
+msgstr "سجل الدخول لحسابك"
+
+#: templates/account/login.html:33
+msgid "Forgot password?"
+msgstr "نسيت كلمة المرور؟"
+
+#: templates/account/login.html:38
+msgid "choose the language"
+msgstr "اختر اللغة"
+
+#: templates/account/password_reset.html:3
+msgid "resset password"
+msgstr "نسيت كلمة المرور"
+
+#: templates/account/password_reset.html:4
+#: templates/account/password_reset_confirm.html:3
+#: templates/account/password_reset_confirm.html:4
+#: templates/base/navbar.html:57
+msgid "change password"
+msgstr "تغيير كلمة المرور"
+
+#: templates/account/password_reset.html:8
+msgid "Reset Password"
+msgstr "استعادة كلمة المرور"
+
+#: templates/account/password_reset.html:9
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
+msgstr ""
+"نسيت كلمة مرورك؟ ضع بريدك الالكتروني في الأسفل, حتى نرسل لك طريقة إنشاء كلمة "
+"مرور جديدة."
+
+#: templates/account/password_reset.html:13
+msgid "Send email"
+msgstr "إرسال"
+
+#: templates/account/password_reset_confirm.html:7
+msgid "Password Reset Confirm"
+msgstr "تأكيد استعادة كلمة المرور"
+
+#: templates/account/password_reset_confirm.html:8
+msgid "Please enter your new password."
+msgstr "رجاء ضع كلمة المرور الجديدة."
+
+#: templates/account/password_reset_confirm.html:12
+msgid "Reset password"
+msgstr "تجديد كلمة المرور"
+
+#: templates/account/password_reset_confirm.html:13
+msgid "go back"
+msgstr "العودة"
+
+#: templates/account/profile.html:3
+msgid "user profile"
+msgstr "ملف المستخدم الشخصي"
+
+# navbar
+#: templates/account/profile.html:4
+msgid "profile"
+msgstr "الملف الشخصي"
+
+#: templates/account/profile.html:38
+msgid "E mail"
+msgstr "البريد الالكتروني"
+
+#: templates/account/profile.html:40 templates/account/signup.html:39
+msgid "Role"
+msgstr "المسؤولية"
+
+#: templates/account/profile.html:42
+msgid "Work feild"
+msgstr "موقع العمل"
+
+#: templates/account/profile.html:44
+msgid "Phone number"
+msgstr "رقم المحمول"
+
+#: templates/account/signup.html:6 templates/account/signup.html:50
+#: templates/account/signup2.html:54
+msgid "Sign up"
+msgstr "تسجيل مستخدم"
+
+#: templates/account/signup.html:22 templates/account/signup2.html:22
+msgid "password1"
+msgstr "كلمة المرور الجديدة"
+
+#: templates/account/signup.html:29 templates/account/signup2.html:29
+msgid "password2"
+msgstr "إعادة كلمة المرور"
+
+#: templates/account/signup2.html:6
+msgid "Sign up data entry"
+msgstr "تسجيل مدخل بيانات"
+
+#: templates/account/template_reset_password.html:3
+msgid "Hello"
+msgstr "مرحبا"
+
+#: templates/account/template_reset_password.html:4
+msgid ""
+"We received a request to reset the password for your account for this email "
+"address. To initiate the password reset process for your account, click the "
+"link below."
+msgstr ""
+"لقد استلمنا منك طلب لتهيئة كلمة المرور لحسابك المسجل بهذا البريد الالكتروني, "
+"للقيام بهذه المهمة اضغط على الرابط في الأسفل, أو انسخه والصقه في نافذة "
+"المتصفح الخاص بك."
+
+#: templates/account/template_reset_password.html:6
+msgid ""
+"This link can only be used once. If you need to reset your password again, "
+"please visit"
+msgstr ""
+"هذا الرابط فقط يستخدم مرة واحدة, إذا أردت تهيئة كلمة المرور مرة أخرى يمكنك "
+"زيارة"
+
+#: templates/account/template_reset_password.html:6
+msgid "and request another reset."
+msgstr "وأرسل طلب آخر."
+
+#: templates/account/template_reset_password.html:7
+msgid "If you did not make this request, you can simply ignore this email."
+msgstr "إذا لم تكن أنت من قام بهذا الطلب, تجاهل هذه الرسالة."
+
+#: templates/account/update-profile.html:3
+msgid "edit user"
+msgstr "تعديل المستخدم"
+
+#: templates/account/update-profile.html:4 templates/account/users-list.html:17
+#: templates/base/sidebar.html:61
+msgid "data entries"
+msgstr "مدخلي البيانات"
+
+#: templates/account/update-profile.html:4
+msgid "Edit user profile"
+msgstr "تعديل ملف المستخدم الشخصي"
+
+#: templates/account/users-list.html:3 templates/account/users-list.html:4
+msgid "users Lis"
+msgstr "قائمة المستخدمين"
+
+#: templates/account/users-list.html:18 templates/base/sidebar.html:65
+msgid "reviewers"
+msgstr "المراجعين"
+
+#: templates/account/users-list.html:49
+msgid "enabled"
+msgstr "مفعل"
+
+#: templates/account/users-list.html:49
+msgid "disabled"
+msgstr "معطل"
+
+#: templates/account/users-list.html:72
+msgid "no users"
+msgstr "لا يوجد مستخدمين"
+
+#: templates/base/base-users.html:4
+msgid "login"
+msgstr "تسجيل الدخول"
+
+#: templates/base/base.html:4
+msgid "Emis - SNS"
+msgstr "مركز معلومات الطلابمن ذوي الاحتياجات"
+
+#: templates/base/base.html:26
+msgid "Home"
+msgstr "الرئيسية"
+
+# jazzmin translations
+#: templates/base/base.html:32 templates/base/sidebar.html:6
+#: templates/base/sidebar2.html:6 templates/base/sidebar3.html:6
+msgid "dashboard"
+msgstr "لوحة التحكم"
+
+#: templates/base/base.html:34 templates/base/navbar.html:13
+#: templates/base/navbar.html:56
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: templates/base/footer.html:3
+msgid "PSN data entry system"
+msgstr "نظام ملعومات الطلاب ذوي الاحتياجات الخاصة"
+
+#: templates/base/footer.html:4
+msgid "Powered by"
+msgstr "تطوير"
+
+#: templates/base/navbar.html:46
+msgid "Account"
+msgstr "الحساب"
+
+# navbar
+#: templates/base/navbar.html:55
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+#: templates/base/navbar.html:58
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: templates/base/sidebar.html:12 templates/base/sidebar2.html:12
+#: templates/base/sidebar3.html:12
+msgid "administrator"
+msgstr "الإشراف"
+
+#: templates/base/sidebar.html:25 templates/base/sidebar2.html:24
+#: templates/base/sidebar3.html:20 templates/home/statics.html:3
+#: templates/home/statics.html:4
+msgid "statics"
+msgstr "الاحصائيات"
+
+#: templates/base/sidebar.html:34 templates/base/sidebar2.html:33
+#: templates/base/sidebar3.html:29 templates/student/add-student.html:4
+#: templates/student/stdform.html:4 templates/student/student-edit.html:4
+#: templates/student/student-profile.html:4
+#: templates/student/student-registration.html:5
+msgid "students"
+msgstr "الطلاب"
+
+#: templates/base/sidebar.html:38 templates/base/sidebar2.html:37
+#: templates/base/sidebar3.html:33 templates/home.html:57
+#: templates/home.html:78
+msgid "all students"
+msgstr "جميع الطلاب"
+
+#: templates/base/sidebar.html:42 templates/base/sidebar2.html:41
+#: templates/base/sidebar3.html:37 templates/home.html:58
+#: templates/home.html:79 templates/partial/filter_row_students.html:6
+msgid "add student"
+msgstr "إضافة طالب"
+
+#: templates/base/sidebar.html:57
+msgid "all users"
+msgstr "جميع المستخدمين"
+
+#: templates/base/sidebar.html:82 templates/base/sidebar2.html:54
+#: templates/base/sidebar3.html:50 templates/home.html:99
+msgid "all teachers"
+msgstr "جميع المعلمين"
+
+#: templates/base/sidebar.html:86 templates/base/sidebar2.html:58
+#: templates/base/sidebar3.html:54 templates/home.html:100
+#: templates/partial/schools.html:41 templates/teacher/teacher-list.html:17
+msgid "add teacher"
+msgstr "إضافة معلم"
+
+#: templates/base/sidebar.html:99 templates/base/sidebar2.html:71
+#: templates/base/sidebar3.html:67
+msgid "all parents"
+msgstr "جميع أولياءالأمور"
+
+#: templates/base/sidebar.html:103 templates/base/sidebar2.html:75
+#: templates/base/sidebar3.html:71 templates/parents/parents-list.html:16
+msgid "add parent"
+msgstr "إضافة ولي أمر"
+
+#: templates/base/sidebar.html:112 templates/base/sidebar2.html:84
+#: templates/base/sidebar3.html:80 templates/settings.html:3
+msgid "settings"
+msgstr "الإعدادات"
+
+#: templates/home.html:3
+msgid "home"
+msgstr "الرئيسية"
+
+#: templates/home.html:4
+msgid "InterFace"
+msgstr "الواجهة"
+
+#: templates/home.html:23 templates/home/governorate.html:39
+#: templates/parents/parent-registration.html:29
+#: templates/partial/pagination.html:12 templates/partial/pagination.html:16
+#: templates/partial/registration/certificates-info.html:10
+#: templates/partial/registration/parent-info.html:48
+#: templates/partial/registration/student-info.html:90
+#: templates/student/add-student.html:36 templates/student/add-student.html:48
+#: templates/student/add-student.html:60 templates/student/add-student.html:72
+#: templates/teacher/teacher-registration.html:35
+msgid "Previous"
+msgstr "السابق"
+
+#: templates/home.html:28 templates/home/governorate.html:44
+#: templates/parents/parent-registration.html:18
+#: templates/partial/pagination.html:43 templates/partial/pagination.html:50
+#: templates/partial/registration/address-info.html:40
+#: templates/partial/registration/certificates-info.html:11
+#: templates/partial/registration/student-info.html:91
+#: templates/student/add-student.html:37 templates/student/add-student.html:49
+#: templates/student/add-student.html:61
+msgid "Next"
+msgstr "التالي"
+
+#: templates/home.html:62 templates/home.html:83
+msgid "Students Total"
+msgstr "إجمالي الطلاب"
+
+#: templates/home.html:104
+msgid "Teachers Total"
+msgstr "إجمالي المعلمين"
+
+#: templates/home/governorate.html:5 templates/home/governorate.html:12
+msgid "governorate districts"
+msgstr "مديريات المحافظة"
+
+#: templates/home/governorate.html:68
+msgid "governorate info "
+msgstr "معلومات المحافظة "
+
+#: templates/home/governorate.html:94 templates/home/statics.html:44
+msgid "عدد طلاب المحافظات"
+msgstr "عدد طلاب المحافظات"
+
+#: templates/home/statics.html:18
+msgid "نوع الإعاقة"
+msgstr "نوع الإعاقة"
+
+#: templates/parents/parent-edit.html:3 templates/student/student-edit.html:3
+#: templates/student/student-edit.html:4
+msgid "Edit Student Info"
+msgstr "تعديل بيانات الطالب"
+
+#: templates/parents/parent-edit.html:4
+msgid "Edit Parent Info"
+msgstr "تعديل بيانات ولي الأمر"
+
+#: templates/parents/parent-profile.html:3
+msgid "parent profile"
+msgstr "ملف ولي الأمر الشخصي"
+
+#: templates/parents/parent-profile.html:4
+msgid "Paernt Profile"
+msgstr "ملف ولي الأمر"
+
+#: templates/parents/parent-profile.html:10
+msgid "parent Information"
+msgstr "معلومات ولي الأمر"
+
+#: templates/parents/parent-profile.html:13
+msgid "Parent Name "
+msgstr "اسم ولي الأمر "
+
+#: templates/parents/parent-profile.html:15
+msgid "place of birth"
+msgstr "مكان الميلاد"
+
+#: templates/parents/parent-profile.html:31
+msgid "More Information"
+msgstr "المزيد من المعلومات"
+
+#: templates/parents/parent-profile.html:34 templates/partial/parents.html:13
+msgid "blood group"
+msgstr "فصيلة الدم"
+
+#: templates/parents/parent-profile.html:35
+msgid "show"
+msgstr "استعراض"
+
+#: templates/parents/parent-profile.html:35
+#: templates/student/student-profile.html:62
+#: templates/student/student-profile.html:77
+msgid "download"
+msgstr "تنزيل"
+
+#: templates/parents/parent-profile.html:41
+msgid "contact info"
+msgstr "معلومات الإتصال"
+
+#: templates/parents/parent-profile.html:54
+#: templates/student/student-profile.html:44
+msgid "address info"
+msgstr "معلومات السكن"
+
+#: templates/parents/parent-registration.html:3
+#: templates/student/add-student.html:3 templates/student/add-student.html:4
+#: templates/student/add-student.html:7
+#: templates/student/student-registration.html:4
+#: templates/student/student-registration.html:5
+#: templates/student/student-registration.html:8
+msgid "Student Register Form"
+msgstr "استمارة تسجيل طالب"
+
+#: templates/parents/parent-registration.html:4
+#: templates/parents/parent-registration.html:7
+msgid "parent Register Form"
+msgstr "استمارة تسجيل ولي أمر"
+
+#: templates/parents/parent-registration.html:12
+#: templates/partial/registration/address-info.html:4
+msgid "Address Information"
+msgstr "معلومات السكن"
+
+#: templates/parents/parent-registration.html:23
+#: templates/partial/registration/student-info.html:4
+#: templates/student/add-student.html:30
+#: templates/teacher/teacher-registration.html:29
+msgid "Personal Information"
+msgstr "المعلومات الشخصية"
+
+#: templates/parents/parent-registration.html:30
+#: templates/partial/registration/parent-info.html:49
+#: templates/student/add-student.html:73
+#: templates/teacher/teacher-registration.html:36
+msgid "submit"
+msgstr "إرسال"
+
+#: templates/parents/parents-list.html:3
+msgid "Paernt Lis"
+msgstr "قائمة أولياء الأمور"
+
+#: templates/parents/parents-list.html:4
+msgid "Parent Lis"
+msgstr "قائمة أولياء الأمور"
+
+#: templates/parents/parents-list.html:9
+msgid "parents list"
+msgstr "قائمة أولياء الأمور"
+
+#: templates/partial/pagination.html:3
+msgid "Showing"
+msgstr "عرض"
+
+#: templates/partial/pagination.html:3
+msgid "of"
+msgstr "من"
+
+#: templates/partial/pagination.html:9
+msgid "first"
+msgstr "الأول"
+
+#: templates/partial/pagination.html:46
+msgid "last"
+msgstr "الأخير"
+
+#: templates/partial/parents.html:12
+msgid "house address"
+msgstr "محل السكن"
+
+#: templates/partial/parents.html:52
+msgid "no parents found"
+msgstr "لم يتم العثور على أي ولي أمر"
+
+#: templates/partial/registration/certificates-info.html:4
+#: templates/student/add-student.html:54
+msgid "Students Documents"
+msgstr "وثائق الطالب"
+
+#: templates/partial/registration/parent-info.html:4
+#: templates/student/add-student.html:66
+msgid "Parent Information"
+msgstr "معلومات ولي الأمر"
+
+#: templates/partial/registration/student-info.html:28
+msgid "age"
+msgstr "العمر"
+
+#: templates/partial/schools.html:11
+msgid "school Name"
+msgstr "اسم المدرسة"
+
+#: templates/partial/schools.html:40
+msgid "add Student"
+msgstr "إضافة طالب"
+
+#: templates/partial/schools.html:42
+msgid "edit school"
+msgstr "تعديل المدرسة"
+
+#: templates/partial/schools.html:44
+msgid "delete school"
+msgstr "حذف المدرسة"
+
+#: templates/partial/schools.html:63
+msgid "No schools Found"
+msgstr "لم نعثر على مدارس"
+
+#: templates/partial/students.html:9
+msgid "student name"
+msgstr "اسم الطالب"
+
+#: templates/partial/students.html:10
+msgid "Reg No"
+msgstr "رقم الطالب"
+
+#: templates/partial/students.html:14
+msgid "Class"
+msgstr "الصف"
+
+#: templates/partial/students.html:15
+msgid "spnType"
+msgstr "نوع الإعاقة"
+
+#: templates/partial/students.html:38
+msgid "Student profile"
+msgstr "الملف الشخصي للطالب"
+
+#: templates/partial/students.html:39
+msgid "edit student"
+msgstr "تعديل الطالب"
+
+#: templates/partial/students.html:41
+msgid "delete student"
+msgstr "حذف الطالب"
+
+#: templates/partial/students.html:56
+msgid "check now"
+msgstr "تحقق حالاً"
+
+#: templates/partial/students.html:57
+msgid "edit and check"
+msgstr "تعديل ومراجعة"
+
+#: templates/partial/students.html:72
+msgid "No Student Found"
+msgstr "لم يتم العثور على أي طالب"
+
+#: templates/partial/teachers.html:10
+msgid "date of brith"
+msgstr "تاريخ الميلاد"
+
+#: templates/partial/teachers.html:13
+msgid "objects_L"
+msgstr "المواد التي يدرسها"
+
+#: templates/partial/teachers.html:50
+msgid "no teachers found"
+msgstr "لم نعثر على معلمين"
+
+#: templates/student/add-student.html:42
+msgid "School Information"
+msgstr "معلومات المدرسة"
+
+#: templates/student/school-edit.html:3 templates/student/school-edit.html:4
+msgid "Edit School Info"
+msgstr "تعديل بيانات المدرسة"
+
+#: templates/student/school-profile.html:3
+msgid "school Profile"
+msgstr "ملف المدرسة"
+
+#: templates/student/school-profile.html:4
+msgid "school "
+msgstr "المدرسة "
+
+#: templates/student/schools-list.html:3 templates/student/schools-list.html:4
+#: templates/student/schools-list2.html:3
+#: templates/student/schools-list2.html:4
+msgid "schools list"
+msgstr "قائمة المدارس"
+
+#: templates/student/schools-list.html:9
+msgid "school Table"
+msgstr "كشف المدارس"
+
+#: templates/student/schools-list2.html:9
+msgid "district schools of "
+msgstr "مدارس مديرية "
+
+#: templates/student/schools-list2.html:9
+msgid "governorate schools of "
+msgstr "مدارس محافظة "
+
+#: templates/student/schools-list2.html:15
+msgid "name of school"
+msgstr "اسم مدرسة"
+
+#: templates/student/stdform.html:3 templates/student/stdform.html:4
+#: templates/student/student-form.html:3 templates/student/student-form.html:4
+msgid "student form"
+msgstr "استمارة الطالب"
+
+#: templates/student/stdform.html:113
+msgid "yes"
+msgstr "نعم"
+
+#: templates/student/stdform.html:113
+msgid "no"
+msgstr "لا"
+
+#: templates/student/student-list.html:4 templates/student/student-list.html:5
+#: templates/student/student-list.html:10
+msgid "students lis"
+msgstr "قائمة الطلاب"
+
+#: templates/student/student-profile.html:4
+msgid "students Profile"
+msgstr "الملف الشخصي للطالب"
+
+#: templates/student/student-profile.html:10
+msgid "student info"
+msgstr "معلومات الطلاب"
+
+#: templates/student/student-profile.html:14
+msgid "student emis code"
+msgstr "الرقم الوطني للطلاب"
+
+#: templates/student/student-profile.html:30
+msgid "school info"
+msgstr "معلومات المدرسة"
+
+#: templates/student/student-profile.html:69
+msgid "parent information"
+msgstr "معلومات ولي الأمر"
+
+#: templates/student/student-profile.html:74
+msgid "parent name"
+msgstr "اسم ولي الأمر"
+
+#: templates/teacher/teacher-edit.html:3 templates/teacher/teacher-edit.html:4
+msgid "Edit teacher Info"
+msgstr "تعديل بيانات المعلم"
+
+#: templates/teacher/teacher-list.html:3 templates/teacher/teacher-list.html:4
+msgid "teachers lis"
+msgstr "قائمة المعلمين"
+
+#: templates/teacher/teacher-list.html:9
+msgid "teacher list"
+msgstr "قائمة المعلمين"
+
+#: templates/teacher/teacher-profile.html:4
+msgid "teacher Profile"
+msgstr "ملف المعلم الشخصي"
+
+#: templates/teacher/teacher-registration.html:3
+#: templates/teacher/teacher-registration.html:4
+#: templates/teacher/teacher-registration.html:7
+msgid "teachers Register Form"
+msgstr "استمارة تسجيل معلم"
+
+msgid "all schools"
+msgstr "جميع المدارس"
+
+msgid "Schools Total"
+msgstr "إجمالي المدارس"
+
+msgid "Parents Total"
+msgstr "إجمالي أولياء الأمور"
+
+msgid "edit"
+msgstr "تعديل"
+
+msgid "Is father the Gaurd ?"
+msgstr "هل الأب هو ولي الأمر ؟"
+
+msgid "hello and welcome in spacial needs students management system"
+msgstr "مرحبا بك في نظام إدارة طلاب ذوي الاحتياجات الخاصة"
+
+msgid "address Information"
+msgstr "معلومات السكن"
+
+msgid "Student Tables"
+msgstr "جدول الطلاب"
+
+msgid "father monthly income"
+msgstr "دخل الأب الشهري"
+
+msgid "spacial needs students management system"
+msgstr "نظام إدارة طلاب ذوي الاحتياجات الخاصة"
+
+msgid "teachcourse"
+msgstr "الدورات التدريبية"
+
+msgid "triningtype"
+msgstr "نوع التدريب"
+
+msgid "entrys"
+msgstr "المدخلين"
+
+msgid "father yearly income"
+msgstr "دخل الأب الشهري"
+
+msgid "Gender "
+msgstr "الجنس "
+
+msgid "Genders"
+msgstr "الأجناس"
+
+msgid "Relation"
+msgstr "القرابة"
+
+msgid "Relations"
+msgstr "القرابات"

@@ -1,0 +1,67 @@
+{% load static i18n%}
+<header class="app-header navbar">
+    <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler sidebar-toggler " type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    {% if user.role.id == 1 %}
+    <ul class="nav navbar-nav d-md-down-none">
+        <li class="nav-item px-3">
+            <a class="nav-link" href="{% url 'admin:index' %}">{% trans "Settings" %}</a>
+        </li>
+    </ul>
+    {% endif %}
+    <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                   {% get_current_language as LANGUAGE_CODE %}
+                   {% get_available_languages as LANGUAGES %}
+                   {% get_language_info_list for LANGUAGES as languages %}
+                   {% for language in languages %}
+                        {% if language.code == LANGUAGE_CODE %}
+                            {% else %}
+                             <button type="submit"  name="language" class="form-control" value="{{ language.code }}" >{{ language.name_local }}</button>
+                        {% endif %}
+                   {% endfor %}
+            </form>
+        </li>
+        <li class=" nav-item px-3">
+            <h6 style="margin-bottom:0"> {{ user.username }}</h6>
+            <small>{{user.role.name}} {{user.location.name|default:""}}</small>
+        </li>
+        <li class="nav-item dropdown" style="margin:10px">
+            <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
+               aria-haspopup="true" aria-expanded="false">
+                {% if request.user.photo %}
+                    <img src="{{  request.user.photo.url}}" class="img-avatar" alt="admin">
+                {% else %}
+                    <img src="{% static 'src/img/man.png' %}" class="img-avatar" alt="Anynumos">
+                {% endif %}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-header text-center">
+                    <strong>{% translate "Account" %}</strong>
+                </div>
+                <a class="dropdown-item" href="#">
+                     {{ request.user.username }}
+                    <span
+                        class="badge badge-info"></span></a>
+                <div class="dropdown-header text-center">
+                    <strong>{% translate "" %}</strong>
+                </div>
+                <a class="dropdown-item" href="{% url 'profile'  user.id %}"><i class="fa fa-user"></i> {% translate "Profile" %}</a>
+                <a class="dropdown-item" href="{% url 'update-profile' user.id %}"><i class="fa fa-wrench"></i> {% translate "Settings" %}</a>
+                <a class="dropdown-item" href="{% url 'password-change' %}"><i class="fa fa-key"></i> {% translate "change password" %}</a>
+                <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-lock"></i> {% translate "Logout" %}</a>
+            </div>
+        </li>
+    </ul>
+
+
+    {% block navbar %}
+    {% endblock %}
+
+</header>

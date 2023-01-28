@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+{% load static i18n%}
+{% block title %}{% translate "edit user" %} {% endblock %}
+{% block cr %}{% if user.role.id == 2 %}<a href="{% url 'district-users' %}">{% translate "data entries" %}</a>/{% elif user.role.id == 1 %}<a href="{% url 'users-list' %}">{% translate "users" %}</a>/{%endif%}{% translate "Edit user profile" %}{% endblock cr %}
+{% block content %}
+    <h4>تحديث بيانات المستخدم</h4>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ forms.as_p }}
+        {% if districts %}
+            <label>تغيير  المديرية التي يعمل بها من <strong> {{ district_p }}</strong> إلى : </label>
+            <select name="district" class="form-control">
+                <option value="">-----------</option>
+                {% for district in districts %}
+                <option value="{{district.id}}">{{district.name}}</option>
+                {% endfor %}
+            </select>
+        {% endif%}
+        {% if governorates %}
+        <label>تغيير مكان العمل من <strong> {{ location.location_type}} - {{location.name}}</strong> إلى : </label>
+        المحافظة :
+        <select name="governorate" id ="id_governorate" load-district="{% url 'load-schools-entry' %}" class="form-control">
+            <option value="">-----------</option>
+            {% for governorate in governorates %}
+            <option value="{{governorate.id}}">{{governorate.name}}</option>
+            {% endfor %}
+            <hr>
+        </select>
+        المديرية :
+        <select name="district" id ="id_district" style="display:none;" class="form-control">
+
+        </select>
+    {% endif%}  
+        <hr>
+        <button class="btn btn-info text-white" onclick="history.back()">{% translate "Go Back" %}</button>
+        <button class="btn btn-success" type="submit" >{% translate "edit" %}</button>
+    </form>
+{% endblock %}
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+$(document).on('change','#id_governorate',function(){
+    var url = $(this).attr("load-district");
+    var governorateId = $(this).val();
+
+    $.ajax({
+      url: url,
+      data: {
+        'governorate': governorateId,
+      },        
+  
+      success: function (data) {
+        $("#id_district").html(data).attr('style','display:block;');
+      }
+    });
+});
+     
+</script>
+{%endblock%}

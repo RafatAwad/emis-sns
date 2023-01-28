@@ -1,0 +1,12 @@
+{% load static i18n %}
+<div class="certificates">
+    <div class="card">
+      <div class="card-header">{% translate "Students Documents" %}</div>
+      <div class="card-body">
+        {% csrf_token %}
+        {{ documents_form.as_p }}
+      </div>
+    </div>
+    <button id="certificates_prev_btn" type="button" class="btn btn-primary pull-right">{% translate "Previous" %}</button>
+    <button id="certificates_btn" type="button" class="btn btn-primary pull-left">{% translate "Next" %}</button>
+  </div>

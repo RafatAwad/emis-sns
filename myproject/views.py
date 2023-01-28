@@ -39,16 +39,16 @@ def home_page(request):
         total_teachers = Teachers.objects.count()
         address = Governorate.objects.all().order_by('id')
         st_1 = raw.filter(spn_type = 1).count()
-        st_1_per = (st_1 / total_student * 100).__ceil__
+        if st_1:
+            st_1_per = (st_1 / total_student * 100).__ceil__
         st_2 = raw.filter(spn_type = 2).count()
-        st_2_per = (st_2 / total_student * 100).__ceil__
+        if st_1:
+            st_2_per = (st_2 / total_student * 100).__ceil__
         st_3 = raw.filter(spn_type = 3).count()
         st_3_per = (st_3 / total_student * 100).__ceil__
         st_4 = raw.filter(spn_type = 4).count()
         st_4_per = (st_4 / total_student * 100).__ceil__
         context.update( {'schools': total_schools,'dist_users':dist_users, "gov_users": gov_users, 'gov_users_active': gov_users_active,'dist_users_active': dist_users_active}
-
-            
         )
     elif request.user.role.id == 2:
         user_student = StudentInfo.objects.filter(checked_by = request.user).count()

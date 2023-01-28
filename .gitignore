@@ -10,7 +10,6 @@
 ~$*
 *.tmp
 **/.envrc
-dist/
 db.sqlite3
 # coverage files
 .coverage

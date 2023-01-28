@@ -1,0 +1,21 @@
+*[dir="rtl"] body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .content-wrapper, body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-footer, body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-header{
+    margin-right: 250px ;
+    margin-left: 0;
+}
+*[dir="rtl"] body, .navbar-expand .navbar-nav .dropdown-menu{
+    text-align: right !important;
+}
+*[dir="rtl"] .sidebar-mini.sidebar-collapse .content-wrapper, .sidebar-mini.sidebar-collapse .main-footer, .sidebar-mini.sidebar-collapse .main-header{
+    margin-right: 100px !important;
+    margin-left: 100px !important;
+}
+*[dir="rtl"] .brand-link .brand-image{
+    float: right ;
+}
+.accent-primary .btn-link, .accent-primary .nav-tabs .nav-link, .accent-primary a:not(.dropdown-item):not(.btn-app):not(.nav-link):not(.brand-link):not(.page-link):not(.btn){
+    font-size: 80%;
+    display: inline-block;
+}
+*[dir="rtl"] .float-right{
+    float: left;
+}

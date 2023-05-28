@@ -49,10 +49,8 @@ INSTALLED_APPS = [
     'teachers',
     'django_filters',
     'captcha',
-    'crispy_forms',
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -73,12 +73,13 @@
             </ul>
           </li>
           <!-- Employee Section END -->
- 
+          {% if user.is_active %}
         <!-- User-Manual Section START -->
         <li class="nav-item nav-dropdown">
          <a class="nav-link" href="{% url 'update-profile' user.id %}">
              <i class="nav-icon icon-puzzle"></i>{% translate "settings" %}</a>
        </li>
+       {% endif %}
        <!-- User-Manual Section END -->
         </ul>
     </nav>

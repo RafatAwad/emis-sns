@@ -89,7 +89,7 @@ class Document(Model):
         verbose_name_plural = _('documents')
 
 class StudentInfo(Model):
-    emis_id = CharField(_('Emis id'), max_length=255, blank=True, null=False)
+    emis_id = CharField(_('Emis id'), unique=True, max_length=255, blank=True, null=False)
     name = CharField(_('name'),max_length=255,blank=False)
     photo = ImageField(_('student photo'),upload_to='student-photos/', blank=True, null=True)
     date_of_birth = DateField(_('date of birth'), null=False, blank=False)
@@ -103,7 +103,7 @@ class StudentInfo(Model):
     mother_work = CharField(verbose_name=_('mother work'), max_length=200, null=True, blank=True)
     family_status = ForeignKey(FamilyStatus, blank=False,  null=True, on_delete=SET_NULL)
     live_with = ForeignKey(LiveWith,  blank=False,  null=True, on_delete=SET_NULL)
-    parent = ForeignKey(P_p, null=True, blank=True, on_delete=SET_NULL)
+    parent = ForeignKey("parent.parent", null=True, blank=True, on_delete=SET_NULL)
     relation = ForeignKey(Relation, null=True, blank=False, on_delete=SET_NULL)
     disease = CharField(verbose_name=_('diseases'), max_length=255, null=True, blank=True)
     address = ForeignKey(Location, null=True, blank=True, on_delete=SET_NULL)
@@ -118,7 +118,7 @@ class StudentInfo(Model):
     checked_by = ForeignKey('account.User',null=True, blank=True, on_delete=SET_NULL, related_name='checked_by')
     checked_date = DateField(verbose_name=_('checking date '), null=True)
     added_date = DateField(verbose_name=_('Add date '), auto_now_add=True)
-    added_by = ForeignKey('account.User',null=True, blank=True, on_delete=SET_NULL, related_name='added_by')
+    added_by = ForeignKey('account.User',null=True, blank=True, on_delete=None, related_name='added_by')
     note = CharField(verbose_name=_('Note'), max_length=200, null=True, blank=True)
 
 

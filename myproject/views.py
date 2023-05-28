@@ -38,16 +38,21 @@ def home_page(request):
         total_schools = School.objects.count()
         total_teachers = Teachers.objects.count()
         address = Governorate.objects.all().order_by('id')
-        st_1 = raw.filter(spn_type = 1).count()
-        if st_1:
+        if not total_student == 0 :
+            st_1 = raw.filter(spn_type = 1).count()
             st_1_per = (st_1 / total_student * 100).__ceil__
-        st_2 = raw.filter(spn_type = 2).count()
-        if st_1:
+            st_2 = raw.filter(spn_type = 2).count()
             st_2_per = (st_2 / total_student * 100).__ceil__
-        st_3 = raw.filter(spn_type = 3).count()
-        st_3_per = (st_3 / total_student * 100).__ceil__
-        st_4 = raw.filter(spn_type = 4).count()
-        st_4_per = (st_4 / total_student * 100).__ceil__
+            st_3 = raw.filter(spn_type = 3).count()
+            st_3_per = (st_3 / total_student * 100).__ceil__
+            st_4 = raw.filter(spn_type = 4).count()
+            st_4_per = (st_4 / total_student * 100).__ceil__
+            context.update({
+                        'st_1': st_1, 'st_1_per': st_1_per,
+                        'st_2': st_2, 'st_2_per': st_2_per,
+                        'st_3': st_3, 'st_3_per': st_3_per,
+                        'st_4': st_4, 'st_4_per': st_4_per,
+            })
         context.update( {'schools': total_schools,'dist_users':dist_users, "gov_users": gov_users, 'gov_users_active': gov_users_active,'dist_users_active': dist_users_active}
         )
     elif request.user.role.id == 2:
@@ -59,22 +64,31 @@ def home_page(request):
         raw = StudentInfo.objects.filter(address__governorate = request.user.location.governorate)
         total_student = raw.count()
         total_checked = raw.exclude(checked = False).count()
-        st_1 = raw.filter(spn_type = 1).count()
-        st_1_per = (st_1 / total_student * 100).__ceil__
-        st_2 = raw.filter(spn_type = 2).count()
-        st_2_per = (st_2 / total_student * 100).__ceil__
-        st_3 = raw.filter(spn_type = 3).count()
-        st_3_per = (st_3 / total_student * 100).__ceil__
-        st_4 = raw.filter(spn_type = 4).count()
-        st_4_per = (st_4 / total_student * 100).__ceil__
+        if not total_student == 0 :
+            total_checked = raw.exclude(checked = False).count()
+            st_1 = raw.filter(spn_type = 1).count()
+            st_1_per = (st_1 / total_student * 100).__ceil__
+            st_2 = raw.filter(spn_type = 2).count()
+            st_2_per = (st_2 / total_student * 100).__ceil__
+            st_3 = raw.filter(spn_type = 3).count()
+            st_3_per = (st_3 / total_student * 100).__ceil__
+            st_4 = raw.filter(spn_type = 4).count()
+            st_4_per = (st_4 / total_student * 100).__ceil__
+            percent_user = (user_student/total_student * 100).__ceil__
+            context.update({
+                        'st_1': st_1, 'st_1_per': st_1_per,
+                        'st_2': st_2, 'st_2_per': st_2_per,
+                        'st_3': st_3, 'st_3_per': st_3_per,
+                        'st_4': st_4, 'st_4_per': st_4_per,
+                        'percent_user':percent_user
+            })
         total_parent = Parent.objects.filter(parent_address__governorate = request.user.location.governorate).count()
         total_teachers = Teachers.objects.filter(teacher_address__governorate = request.user.location.governorate).count()
         address = District.objects.filter(governorate = request.user.location.id).order_by('id')
         user_teachers= Teachers.objects.filter(added_by = request.user).count()
         #percent = (total_checked / total_student * 100).__ceil__
-        percent_user = (user_student/total_student * 100).__ceil__
         context.update(
-             {'user_students': user_student, 'data_entries': user_users, 'de_active': user_users_active,'teachers_t':user_teachers,'percent_user':percent_user
+             {'user_students': user_student, 'data_entries': user_users, 'de_active': user_users_active,'teachers_t':user_teachers
              }
         )
     elif request.user.role.id  == 3:
@@ -89,20 +103,27 @@ def home_page(request):
         raw2 = StudentInfo.objects.filter(address__district = request.user.location.district)
         total_student = raw2.count()
         total_checked = raw2.exclude(checked = False).count()
-        st_1 = raw2.filter(spn_type = 1).count()
-        st_1_per = (st_1 / total_student * 100).__ceil__
-        st_2 = raw2.filter(spn_type = 2).count()
-        st_2_per = (st_2 / total_student * 100).__ceil__
-        st_3 = raw2.filter(spn_type = 3).count()
-        st_3_per = (st_3 / total_student * 100).__ceil__
-        st_4 = raw2.filter(spn_type = 4).count()
-        st_4_per = (st_4 / total_student * 100).__ceil__
-        percent_user = (user_student/total_student * 100).__ceil__
-
+        if not total_student == 0 :
+            st_1 = raw2.filter(spn_type = 1).count()
+            st_1_per = (st_1 / total_student * 100).__ceil__
+            st_2 = raw2.filter(spn_type = 2).count()
+            st_2_per = (st_2 / total_student * 100).__ceil__
+            st_3 = raw2.filter(spn_type = 3).count()
+            st_3_per = (st_3 / total_student * 100).__ceil__
+            st_4 = raw2.filter(spn_type = 4).count()
+            st_4_per = (st_4 / total_student * 100).__ceil__
+            percent_user = (user_student/total_student * 100).__ceil__
+            context.update({
+                        'st_1': st_1, 'st_1_per': st_1_per,
+                        'st_2': st_2, 'st_2_per': st_2_per,
+                        'st_3': st_3, 'st_3_per': st_3_per,
+                        'st_4': st_4, 'st_4_per': st_4_per,
+                        'percent_user':percent_user
+            })
         total_parent = Parent.objects.filter(parent_address__district = request.user.location.district).count()
         total_teachers = Teachers.objects.filter(teacher_address__district = request.user.location.district).count()
         context.update(
-            {'user_students': user_student, 'user_checked': user_checked,'teachers_t':user_teachers,'percent_user':percent_user
+            {'user_students': user_student, 'user_checked': user_checked,'teachers_t':user_teachers
 
              }
         )
@@ -120,9 +141,6 @@ def home_page(request):
         'parent': total_parent,
         'teachers': total_teachers,
         'addresses': address,
-        'st_1': st_1, 'st_1_per': st_1_per,
-        'st_2': st_2, 'st_2_per': st_2_per,
-        'st_3': st_3, 'st_3_per': st_3_per,
-        'st_4': st_4, 'st_4_per': st_4_per,
+
     })
     return render(request, 'home.html', context)

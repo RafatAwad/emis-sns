@@ -19,13 +19,13 @@ class UserEditForm(UserChangeForm):
             'email': EmailInput(attrs={'class': 'form-control','placeholder':_('email')}),
             'first_name': TextInput(attrs={'class': 'form-control'}),
             'last_name': TextInput(attrs={'class': 'form-control'}),
-            'photo': ClearableFileInput(attrs={'class': 'form-control', 'accept': '.png, .jpg'}),
+            'photo': ClearableFileInput(attrs={'class': 'form-control', 'accept': '.png, .jpg, .jpeg'}),
             'phone_number': TextInput(attrs={'class': 'form-control'}),
         }
 
 class SignupForm(UserCreationForm):  
     class Meta:  
-        model = User  
+        model = User
         fields = ('username', 'email', 'password1', 'password2', 'role')  
         widgets = {
             'username': TextInput(attrs={'class': 'form-control', 'placeholder':_('username')}),

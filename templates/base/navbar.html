@@ -52,10 +52,12 @@
                 <div class="dropdown-header text-center">
                     <strong>{% translate "" %}</strong>
                 </div>
+            {% if user.is_active%}
                 <a class="dropdown-item" href="{% url 'profile'  user.id %}"><i class="fa fa-user"></i> {% translate "Profile" %}</a>
                 <a class="dropdown-item" href="{% url 'update-profile' user.id %}"><i class="fa fa-wrench"></i> {% translate "Settings" %}</a>
                 <a class="dropdown-item" href="{% url 'password-change' %}"><i class="fa fa-key"></i> {% translate "change password" %}</a>
                 <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-lock"></i> {% translate "Logout" %}</a>
+            {%endif%}
             </div>
         </li>
     </ul>

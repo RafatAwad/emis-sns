@@ -13,6 +13,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.decorators import login_required
+from account.decorators import is_not_admin, user_authenticated
 import random
 from django.utils.text import Truncator
 from datetime import date
@@ -141,7 +142,11 @@ def add_student(request, school_code):
             emis_id = str(s1.school_code.zfill(5))+"_"+ str(stu_year)+"_" + str(student_number)
             s2 = student_address_form
             s3 = student_parent_form.save(commit=False)
-            s3.parent_address = parent_address_form
+            if request.POST.get('district'):
+                 s3.parent_address = Location.objects.get(id = request.POST.get('district'))
+            elif request.POST.get('governorate_p'):
+                 s3.parent_address = Location.objects.get(id = request.POST.get('governorate'))            
+            
             s3.save()
             s4 = student_documents_form.save()
             student_info = student_form.save(commit=False)
@@ -163,19 +168,21 @@ def add_student(request, school_code):
     }
     return render(request, 'student/add-student.html', context)
 
-@login_required
+#@login_required
 def student_profile(request, emis_id):
     student = StudentInfo.objects.get(emis_id=emis_id)
     context = {
         'student': student
     }
-    if(login_required):
-        return render(request, 'student/stdform.html', context)
+    if  user_authenticated :
+        return render(request, 'student/stdform2.html', context)
     else:
-        return render(request, 'student/student-profile.html', context)
+        return render(request, 'student/stdform.html', context)
+
 
 
 @login_required
+@is_not_admin(redirect_url = 'schools-list')
 def student_registration(request):
     student_form = StudentForm(request.POST or None, request.FILES or None)
     student_address_form = StudentAddressForm2(request.POST or None)
@@ -205,7 +212,11 @@ def student_registration(request):
             emis_id = str(s1.school_code.zfill(5))+"_"+ str(stu_year)+"_" + str(student_number)
             s2 = address
             s3 = student_parent_form.save(commit=False)
-            s3.parent_address = parent_address_form
+            if request.POST.get('district'):
+                 s3.parent_address = Location.objects.get(id = request.POST.get('district'))
+            elif request.POST.get('governorate_p'):
+                 s3.parent_address = Location.objects.get(id = request.POST.get('governorate'))            
+            
             s3.save()
             s4 = student_documents_form.save()
             student_info = student_form.save(commit=False)
@@ -237,20 +248,7 @@ def student_edit(request, emis_id):
         'address': student.address,
         'school': student.school,
     })
-    # districts = District.objects.get(governorate = student.address.governorate)
-    
-    # sub_district = SubDistrict.objects.get(sub_district =  student.address.district)
-    # village = Village.objects.get(village =  student.address.sub_district)
-    # sub_village = SubVillage.objects.get(sub_village = student.address.village)
-    # school = School.objects.get(school_address = student.address.id)
     student_form = StudentForm(instance=student)
-    #context.update({
-       # "districts": districts,
-       # "sub_district": sub_district,
-       # "village": village,
-       # "sub_village": sub_village,
-      #  "school": school,
-   # })
     student_school_form = StudentSchoolForm(instance=student.school)
     student_address_form = StudentAddressForm(instance=student.address)
     student_Parent_form = StudentParentForm(instance=student.parent)

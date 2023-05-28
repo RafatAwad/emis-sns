@@ -4,6 +4,7 @@
           <div class="card-header">{% translate "Personal Information" %}</div>
         <div class="card-body">
                 {% csrf_token %}
+               
                <div class="row">
                   <div class="col-md-4">
                     <label>{{ student_form.name.label }}</label>{{ student_form.name }}

@@ -16,11 +16,10 @@
     <!-- Main styles for this application -->
     {% if 'ar' in LANGUAGE_CODE %} 
     <link rel="stylesheet" href="{% static 'dist/css/style.rtl.css' %}"/>
-    <link href="{% static 'src/css/form.css' %}" rel="stylesheet">
     {% else %}
     <link href="{% static 'dist/css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'src/css/form.css' %}" rel="stylesheet">
     {% endif %}
+    <link href="{% static 'src/css/form.css' %}" rel="stylesheet">
     {% block extrahead %}
     {% endblock %}
 </head>

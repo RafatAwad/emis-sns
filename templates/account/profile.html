@@ -5,49 +5,46 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-3">
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    {% if profile.photo %}
-                        <img  class="profile-user-img img-fluid " src="{{ profile.photo.url }}" alt="Photo">
-                    {% else %}
-                        <img  class="profile-user-img img-fluid " src="{% static 'src/img/man.png' %}" alt="Photo">
-                    {% endif %}
-                <div class="">
-                <h5 class="profile-username">{% if profile.first_name %}{{profile.first_name }} {{profile.last_name|default:"" }}{% else %}{{profile.username}}{% endif %}</h5>
-                </div>
-                <hr>
-                <p>{{profile.role}} - {{profile.location}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <div class="col-9">
-    <div class="card">
-        <div class="card-body">
-            <dl class="row">
-                <dt class="col-sm-4">{% translate "username" %}</dt>
-                <dd class="col-sm-8">{{ profile.username }}</dd>
-                <dt class="col-sm-4">{% translate "first name" %}</dt>
-                <dd class="col-sm-8">{{ profile.first_name|default:"---------" }}</dd>
-                <dt class="col-sm-4">{% translate "last name" %}</dt>
-                <dd class="col-sm-8">{{ profile.last_name|default:"---------"  }}</dd>
-                <dt class="col-sm-4">{% translate "E mail" %}</dt>
-                <dd class="col-sm-8">{{ profile.email }}</dd>                
-                <dt class="col-sm-4">{% translate "Role" %}</dt>
-                <dd class="col-sm-8">{{ profile.role }}</dd>
-                <dt class="col-sm-4">{% translate "Work feild" %}</dt>
-                <dd class="col-sm-8">{{ profile.location|default:"---------"  }}</dd>
-                <dt class="col-sm-4">{% translate "Phone number" %}</dt>
-                <dd class="col-sm-8">{{ profile.phone_number|default:"لا يوجد" }}</dd>
-
-            </dl>
-        <a  href="{% url 'update-profile' profile.id %}" class="btn btn-primary btn-block fa fa-edit"> {% translate "edit" %}</a>
-        </div>
-    </div>
-    </div>
+    <div class="col-md-3 col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        {% if profile.photo %}
+                            <img  class="profile-user-img img-fluid " src="{{ profile.photo.url }}" alt="Photo">
+                        {% else %}
+                            <img  class="profile-user-img img-fluid " src="{% static 'src/img/man.png' %}" alt="Photo">
+                        {% endif %}
+                        <h5 class="profile-username">{% if profile.first_name %}{{profile.first_name }} {{profile.last_name|default:"" }}{% else %}{{profile.username}}{% endif %}</h5>
+                        <hr>
+                        <p>{{profile.role}} - {{profile.location}}</p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+    <div class="col-md-9 col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">{% translate "username" %}</dt>
+                    <dd class="col-sm-8">{{ profile.username }}</dd>
+                    <dt class="col-sm-4">{% translate "first name" %}</dt>
+                    <dd class="col-sm-8">{{ profile.first_name|default:"---------" }}</dd>
+                    <dt class="col-sm-4">{% translate "last name" %}</dt>
+                    <dd class="col-sm-8">{{ profile.last_name|default:"---------"  }}</dd>
+                    <dt class="col-sm-4">{% translate "E mail" %}</dt>
+                    <dd class="col-sm-8">{{ profile.email }}</dd>                
+                    <dt class="col-sm-4">{% translate "Role" %}</dt>
+                    <dd class="col-sm-8">{{ profile.role }}</dd>
+                    <dt class="col-sm-4">{% translate "Work feild" %}</dt>
+                    <dd class="col-sm-8">{{ profile.location|default:"---------"  }}</dd>
+                    <dt class="col-sm-4">{% translate "Phone number" %}</dt>
+                    <dd class="col-sm-8">{{ profile.phone_number|default:"لا يوجد" }}</dd>
+                </dl>
+                <a  href="{% url 'update-profile' profile.id %}" class="btn btn-primary btn-block fa fa-edit"> {% translate "edit" %}</a>
+             </div>
+         </div>
+     </div>
 </div>
 {% endblock %}

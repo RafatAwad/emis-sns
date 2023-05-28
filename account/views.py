@@ -5,7 +5,7 @@ from address.models import Location, District,Governorate
 from django.shortcuts import render, redirect
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth.decorators import login_required
-from .decorators import user_not_authenticated,is_not_admin
+from .decorators import user_authenticated,is_not_admin
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.utils.translation import gettext as _
@@ -55,7 +55,7 @@ def enable_user(request,id):
         return redirect('users-list')
     
 
-@user_not_authenticated
+@user_authenticated
 def activate(request, uidb64, token):  
     user = User
     try:  
@@ -156,11 +156,12 @@ def signup2(request):
         messages.error(request, _('error oops'))
 
     return render(request, 'account/signup2.html', {'form': form, 'districts': districts})  
+from django.db.models import Count    
 
 @login_required(login_url='login')
 @is_not_admin
 def users_list(request):
-    users = User.objects.order_by('-id')
+    users = User.objects.annotate(total_t = Count('teachers__added_by'),total_stu = Count('added_by')).order_by('-id')
     tableFilter = UsersFilter(request.GET, queryset=users)
     users = tableFilter.qs
     paginator = Paginator(users, 10) 
@@ -170,6 +171,27 @@ def users_list(request):
                'tableFilter': tableFilter
                }
     return render(request, 'account/users-list.html', context)
+
+@login_required(login_url='login')
+@is_not_admin
+def users2(request):
+    context = {}
+    if request.GET.get('data_entry') and not request.GET.get('data_entry') == None:
+        users = User.objects.filter(role__id = 3).annotate(total_stu = Count('added_by')).order_by('-id')
+    elif request.GET.get('supervisors') and not request.GET.get('supervisors') == None:
+        users = User.objects.filter(role__id = 2).annotate(total_stu = Count('added_by')).order_by('-id')
+    else :
+        users = User.objects.annotate(total_stu = Count('added_by')).order_by('-id')
+    tableFilter = UsersFilter(request.GET, queryset=users)
+    users = tableFilter.qs
+    paginator = Paginator(users, 10) 
+    page_number = request.GET.get('page')
+    users_with_pag = paginator.get_page(page_number)
+    context = {'items': users_with_pag,
+               'tableFilter': tableFilter
+               }
+    return render(request, 'account/users.html', context)
+
 
 @login_required(login_url='login')
 def district_users(request):
@@ -185,14 +207,14 @@ def district_users(request):
     return render(request, 'account/district-users.html', context)
 
 @login_required(login_url='login')
-def user_delete(request,user_id):
-    user_f = User.objects.get(id=user_id)
+def user_delete(request,id):
+    user_f = User.objects.get(id=id)
     user_f.delete()
     return redirect('users-list')
 
     
     
-@user_not_authenticated
+@user_authenticated
 def password_reset_request(request):
     if request.method == 'POST':
         form = PasswordResetForm(request.POST)
@@ -319,18 +341,23 @@ def update_profile(request, id):
                 return redirect('users-list')
             elif request.user.role.id == 2:
                 return redirect('district-users')
+            else:
+                return redirect('home')
         messages.error(request,_('user info not updated !!'))
         if request.user.role.id == 1:
             return redirect('users-list')
         elif request.user.role.id == 2:
             return redirect('district-users')
+        else:
+            return redirect('home')
+
 
     context.update({
         'forms': forms
     })
     return render(request, 'account/update-profile.html', context)
 
-@user_not_authenticated
+@user_authenticated
 def admin_login(request):
     form = AdminLoginForm(request.POST or None)
     if request.method == 'POST':     

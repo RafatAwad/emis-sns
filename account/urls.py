@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import profile, update_profile, admin_login, admin_logout, settings_page,password_change,password_reset_request,passwordResetConfirm,signup,activate,user_delete,users_list,district_users,signup2,enable_user,disable_user
+from .views import profile, update_profile, admin_login, admin_logout, settings_page,password_change,password_reset_request,passwordResetConfirm,signup,activate,user_delete,users_list,district_users,signup2,enable_user,disable_user,users2
 
 urlpatterns = [
     path('login', admin_login, name='login'),
@@ -7,8 +7,9 @@ urlpatterns = [
     path('signup', signup, name='signup'),
     path('signup2', signup2, name='signup2'),
     path('users', users_list, name='users-list'),
+    path('users2', users2, name='users2'),
     path('district-users', district_users, name='district-users'),
-    path('user-delete/<int:id>', user_delete, name='user-delete'),
+    path('user-delete/<id>', user_delete, name='user-delete'),
     path("password-change", password_change, name="password-change"),
     path("password-reset", password_reset_request, name="password-reset"),
     path('reset/<uidb64>/<token>', passwordResetConfirm, name='password-reset-confirm'),

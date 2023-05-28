@@ -1,5 +1,4 @@
 {% extends 'base/base.html' %}
-{% load crispy_forms_tags %}
 {% load static i18n %}
 {% block title %}{% translate "Student Register Form" %}{% endblock %}
 {% block cr %} <a href="{% url 'student-list' %}"> {% translate "students" %}</a> / {% translate "Student Register Form" %}{% endblock %}
@@ -7,7 +6,7 @@
   <div class="card">
     <div class="card-header">{% translate "Student Register Form" %}</div>
     <div class="card-body">
-      <form class="" action="" method="post" enctype="multipart/form-data" id="StudentRegistrationForm" load-schools-entry={% url 'load-schools-entry' %}>
+      <form class="" action="" method="post" enctype="multipart/form-data" id="StudentRegistrationForm" load-schools-entry="{% url 'load-schools-entry' %}">
       {% include 'partial/registration/address-info.html' %}
       {% include 'partial/registration/student-info.html' %}
       {% include 'partial/registration/certificates-info.html' %}
@@ -32,4 +31,22 @@
 
 });
 </script>
+<script>
+  $("#parent_governorate ").on('change',function () {
+    var url = $("#StudentRegistrationForm").attr("load-schools-entry");
+    var governorateId = $(this).val();
+    
+    $.ajax({
+      url: url,
+      data: {
+        'governorate': governorateId,
+      },       
+    
+      success: function (data) {
+        $("#parent_district").html(data);
+      }
+    });
+    
+    });
+</script>  
 {%endblock%}

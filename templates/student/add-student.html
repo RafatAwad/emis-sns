@@ -6,7 +6,7 @@
   <div class="card">
     <div class="card-header card-title-student">{% translate "Student Register Form" %}</div>
     <div class="card-body">
-      <form class="" action="" method="post" enctype="multipart/form-data" id="StudentRegistrationForm">
+      <form class="" action="" method="post" enctype="multipart/form-data" id="filterForm" load-schools-entry="{% url 'load-schools-entry'%}" >
         
         <div class="address_info">
           <div class="card">
@@ -49,4 +49,22 @@
       <script src="{% static 'src/js/address.js' %}"></script>
     </div>
   </div>
+<script>
+  $("#parent_governorate ").on('change',function () {
+    var url = $("#filterForm").attr("load-schools-entry");
+    var governorateId = $(this).val();
+    
+    $.ajax({
+      url: url,
+      data: {
+        'governorate': governorateId,
+      },       
+    
+      success: function (data) {
+        $("#parent_district").html(data);
+      }
+    });
+    
+    });
+  </script>    
 {% endblock %}

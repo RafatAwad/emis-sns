@@ -1,0 +1,180 @@
+{% extends "base/base-users.html" %}
+{% load static i18n%}
+{% block title %}{% translate "student form" %} {% endblock%}
+{%  block content  %}
+        <div id="printableArea" style="background:white;padding:10px" class="col-md-20"> 
+            <section class="example" id="ra">
+                    <div class="row header-form">
+                        <div class="col-md-12 pull-left">
+                            <div class="demo pull-left" id="qr_code" url="http://127.0.0.1:8000{{request.path}}">
+                                <img src="" class="img-canvas" id="img-canvas" />
+                            </div>
+                    {% if student.photo %}
+                        <img class="img-form pull-left" src="{{ student.photo.url }}" alt="Photo">
+                    {% else %}
+                        <img class="img-form pull-left"  src="{% static "src/img/man.png"%}" alt="Photo">
+                    {% endif %}
+                        </div>
+                    </div>
+                    <hr/>
+                <!--Table-->
+                    <table class="table table-bordered border-black">
+                        <thead>
+                            <tr>
+                                <th colspan="9" class="table-info">
+                                        بيانات الطالب
+                                </th>
+                            </tr>
+                            <tr>
+                                <td colspan="1"  class="table-tit">الاسم رباعيا مع اللقب</td>
+                                <td id="stu_name" colspan="5">{{ student.name|default:"-" }}</td>
+                                <td  colspan="1"  class="table-tit">الجنس</td>
+                                <td  colspan="2">{{ student.gender.name|default:"-" }}</td>
+                            </tr>
+                            <tr>
+                                <td  class="table-tit">تاريخ الميلاد</td>
+                                <td colspan="2">{{student.date_of_birth|default:"-" }}</td>
+                                <td  class="table-tit">العمر</td>
+                                <td colspan="1">{{student.date_of_birth|stu_age}}</td>
+                                <td  class="table-tit">محل الميلاد</td>
+                                <td colspan="1">{{student.place_of_birth|default:"-" }}</td>
+                                <td  class="table-tit">لديه شهادة ميلاد</td>
+                                <td colspan="1">{% if student.documents.birth_cert %} <a href="{{student.documents.birth_cert}}">نعم</a>{%else%} لا {% endif %}</td>
+                            </tr>
+                            <tr>
+                                <td  class="table-tit">اسم ولي الامر</td>
+                                <td colspan="2">{{ student.parent.parent_name|default:"-" }}</td>
+                                <td  class="table-tit">علاقته بالطفل</td>
+                                <td colspan="2">{{student.relation|default:"-" }}</td>
+                                <td  class="table-tit">الهاتف</td>
+                                <td colspan="2">{{student.parent.parent_phone|default:"-"}}</td>
+                            </tr>
+                            <tr>
+                                <th colspan="9"  class="table-info">بيانات والدي الطفل</th>
+                            </tr>
+                            <tr>
+                                <td  class="table-tit" colspan="1">اسم الاب</td>
+                                <td id="dad_name" colspan="3"></td>
+                                <td  class="table-tit" colspan="2">العمل</td>
+                                <td colspan="3">{{ student.father_job|default:"-"}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1"  class="table-tit">اسم الام</td>
+                                <td colspan="3">{{student.mother_name|default:"---------"}}</td>
+                                <td  colspan="2" class="table-tit">العمل</td>
+                                <td colspan="3">{{student.mother_work|default:"لا يوجد"}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"  class="table-tit"> الحالة المادية للاسرة</td>
+                                <td colspan="3">{{student.family_status|default:"-"}}</td>
+                                <td  class="table-tit">المجتمع الذي ينتمي اليه</td>
+                                <td colspan="3">{{student.socit|default:"-"}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">الوضع الحالي لرعاية الطفل ومع من يعيش أثناء الإحالة</td>
+                                <td  class="table-tit">يعيش مع</td><td colspan="2">{{student.live_with|default:"-"}}</td>
+                            </tr>
+                            <tr>
+                                <th colspan="9">الحالة الصحية للطفل:  هل الطفل يعاني من أي امراض مزمنة ؟  اكتبها ان وجدت</th>    
+                            </tr>
+                            <tr>
+                                <td colspan="9">{{student.disease|default:"لا يوجد"}}</td>
+                            </tr>
+
+                            <tr>
+                                <th  colspan="9" class="table-info"> البيانات الدراسية للطالب من ذوي الاحتياجات الخاصة</th>
+                            </tr>
+                            <tr>
+                                <td  class="table-tit"> اسم المدرسة </td>
+                                <td  colspan="4">{{student.school.school_name|default:"-"}}</td>
+                                <td  class="table-tit"> المرحلة الدراسية</td>
+                                <td colspan="3">{{student.grade.name|default:"-"}}</td>
+                            </tr>
+                            <tr>
+                                <td  class="table-tit"> الموهبة</td>
+                                <td colspan="4">{{student.skills|default:"-"}}</td>
+                                <td  class="table-tit">  منقطع عن الدراسة؟ </td>
+                                <td  colspan="3"> {% if student.edu_status %} {% translate "yes" %} {% else %}{% translate "no" %} {% endif %}</td>
+                            </tr> 
+                            <tr>
+                                <td  class="table-tit">نوع الاعاقة</td>
+                                <td colspan="4">{{student.spn_type|default:"-"}}</td>
+                                <td  class="table-tit">حالة الاعاقة</td>
+                                <td colspan="3">-----</td>
+                            </tr>
+                            <tr>
+                                <th  colspan="9"  class="table-info">بيانات  سكن الطالب</th> 
+                            </tr>
+                            <tr>
+                                <td colspan="1"  class="table-tit">المحافظة</td>
+                                <td colspan="2">{{ student.address.governorate.name|default:"-" }}</td>
+                                <td colspan="1"  class="table-tit">المديرية</td>
+                                <td colspan="2" >{{ student.address.district.name|default:"-" }}</td>
+                                <td colspan="1"  class="table-tit">العزلة </td>
+                                <td colspan="2">{{ student.address.sub_district.name|default:"-" }}</td>
+                            </tr>
+                            <tr>
+                                <td  colspan="1"  class="table-tit">القرية</td>
+                                <td colspan="2">{{ student.address.village.name|default:"-" }}</td>
+                                <td  class="table-tit">المحلة</td>
+                                <td colspan="2">{{ student.address.sub_village.name|default:"-" }}</td>
+                                <td  class="table-tit">الحالة الحضرية </td>
+                                <td colspan="2">{{student.ur_or_ru|default:"-"}}</td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <br/>
+             </section>
+                <button class="btn btn-primary" id="print">طباعة </button>
+                <hr/>
+         </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+        crossorigin="anonymous">
+</script>
+<script src="{% static 'src/js/jquery.qrcode.min.js' %}"></script>
+<script>
+
+
+</script>
+        <!--Table-->
+<script>
+    var url = $(".demo").attr("url");
+    $(".demo").qrcode({
+        text: url,
+        width: 100,
+        height: 100,
+        background: "#ffffff",
+        foreground: "#000000",
+    });
+    $(document).ready(function(){
+        var canvas = document.getElementsByTagName("canvas")[0].toDataURL("image/png");
+        $("#img-canvas").attr("src", canvas);
+        var text = $("#stu_name").text().split(' ').slice(1, ).join(" ");
+        $("#dad_name").text(text);
+    });
+    $(document).on('click',"#print",function(){
+        var printWindow = window.open("", "_blank", "");
+        var head = $("head").html();
+        var  header = "header";
+        var  footer = "footer";
+        printWindow.document.open();
+        printWindow.document.write('<html lang="ar" dir="rtl"><head>'+head+'</head><body style="background:white">');
+        printWindow.document.write($("#ra").html());
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.focus();
+        
+        setTimeout(function() 
+        {
+            printWindow.print();
+            printWindow.close();
+        }, 100);
+    });
+
+
+    </script>    
+{%  endblock content  %}
+
+
+  
